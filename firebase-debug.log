@@ -1,0 +1,485 @@
+[debug] [2026-07-23T22:38:02.773Z] ----------------------------------------------------------------------
+[debug] [2026-07-23T22:38:02.774Z] Command:       /opt/homebrew/Cellar/node/26.5.0/bin/node /opt/homebrew/bin/firebase emulators:start --only auth,firestore,functions
+[debug] [2026-07-23T22:38:02.774Z] CLI Version:   15.24.0
+[debug] [2026-07-23T22:38:02.774Z] Platform:      darwin
+[debug] [2026-07-23T22:38:02.774Z] Node Version:  v26.5.0
+[debug] [2026-07-23T22:38:02.774Z] Detected Agent: claude-code_2-1-202_agent
+[debug] [2026-07-23T22:38:02.774Z] Time:          Fri Jul 24 2026 01:38:02 GMT+0300 (Eastern European Summer Time)
+[debug] [2026-07-23T22:38:02.774Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-07-23T22:38:02.780Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2026-07-23T22:38:03.172Z] openjdk version "21.0.12" 2026-07-21
+
+[debug] [2026-07-23T22:38:03.172Z] OpenJDK Runtime Environment Homebrew (build 21.0.12)
+OpenJDK 64-Bit Server VM Homebrew (build 21.0.12, mixed mode, sharing)
+
+[debug] [2026-07-23T22:38:03.174Z] Parsed Java major version: 21
+[info] i  emulators: Starting emulators: auth, functions, firestore {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: auth, functions, firestore"}}
+[info] i  emulators: Detected demo project ID "demo-mle", emulated services will use a demo configuration and attempts to access non-emulated services for this project will fail. {"metadata":{"emulator":{"name":"hub"},"message":"Detected demo project ID \"demo-mle\", emulated services will use a demo configuration and attempts to access non-emulated services for this project will fail."}}
+[debug] [2026-07-23T22:38:03.927Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2026-07-23T22:38:03.927Z] [auth] Authentication Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2026-07-23T22:38:03.927Z] [firestore] Firestore Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2026-07-23T22:38:03.927Z] [firestore.websocket] websocket server for firestore only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2026-07-23T22:38:03.927Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2026-07-23T22:38:03.929Z] Write emulator hub locator at /var/folders/h2/hqw8w_0x7m3b6ywqbhf60p8r0000gr/T/hub-demo-mle.json
+[debug] [2026-07-23T22:38:04.317Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2026-07-23T22:38:04.317Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2026-07-23T22:38:04.317Z] [tasks] Cloud Tasks Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2026-07-23T22:38:04.317Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}],"tasks":[{"address":"127.0.0.1","family":"IPv4","port":9499}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
+[debug] [2026-07-23T22:38:04.324Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2026-07-23T22:38:04.324Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[info] i  firestore: downloading cloud-firestore-emulator-v1.21.0.jar... {"metadata":{"emulator":{"name":"firestore"},"message":"downloading cloud-firestore-emulator-v1.21.0.jar..."}}
+[debug] [2026-07-23T22:38:04.340Z] >>> [apiv2][query] GET https://storage.googleapis.com/firebase-preview-drop/emulator/cloud-firestore-emulator-v1.21.0.jar 
+[debug] [2026-07-23T22:38:04.637Z] <<< [apiv2][status] GET https://storage.googleapis.com/firebase-preview-drop/emulator/cloud-firestore-emulator-v1.21.0.jar 200
+[debug] [2026-07-23T22:38:04.637Z] <<< [apiv2][body] GET https://storage.googleapis.com/firebase-preview-drop/emulator/cloud-firestore-emulator-v1.21.0.jar [stream]
+[debug] [2026-07-23T22:38:32.714Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2026-07-23T22:38:32.714Z] Ignoring unsupported arg: single_project_mode_error {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: single_project_mode_error"}}
+[debug] [2026-07-23T22:38:32.714Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","/Users/spiros.kafkias/.cache/firebase/emulators/cloud-firestore-emulator-v1.21.0.jar","--host","127.0.0.1","--port",8080,"--websocket_port",9150,"--database-edition","standard","--project_id","demo-mle","--rules","/Users/spiros.kafkias/Documents/repositories/mle-pickup/firestore.rules","--single_project_mode",true,"--functions_emulator","127.0.0.1:5001"],"optionalArgs":["port","webchannel_port","host","rules","websocket_port","database-edition","functions_emulator","seed_from_export","project_id","single_project_mode"],"joinArgs":false,"shell":false,"port":8080} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"/Users/spiros.kafkias/.cache/firebase/emulators/cloud-firestore-emulator-v1.21.0.jar\",\"--host\",\"127.0.0.1\",\"--port\",8080,\"--websocket_port\",9150,\"--database-edition\",\"standard\",\"--project_id\",\"demo-mle\",\"--rules\",\"/Users/spiros.kafkias/Documents/repositories/mle-pickup/firestore.rules\",\"--single_project_mode\",true,\"--functions_emulator\",\"127.0.0.1:5001\"],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"websocket_port\",\"database-edition\",\"functions_emulator\",\"seed_from_export\",\"project_id\",\"single_project_mode\"],\"joinArgs\":false,\"shell\":false,\"port\":8080}"}}
+[info] i  firestore: Firestore Emulator logging to firestore-debug.log {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator logging to firestore-debug.log"}}
+[debug] [2026-07-23T22:38:33.141Z] Jul 24, 2026 1:38:33 AM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start
+INFO: Started WebSocket server on ws://127.0.0.1:9150
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:38:33 AM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start\nINFO: Started WebSocket server on ws://127.0.0.1:9150\n"}}
+[debug] [2026-07-23T22:38:33.150Z] 
+API endpoint: http:// {"metadata":{"emulator":{"name":"firestore"},"message":"\nAPI endpoint: http://"}}
+[debug] [2026-07-23T22:38:33.150Z] 127.0.0.1:8080
+Database Edition: STANDARD
+Database Mode: CLOUD_FIRESTORE
+
+If you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:
+
+   export FIRESTORE_EMULATOR_HOST=127.0.0.1:8080
+
+If you are running a Firestore in Datastore Mode project, run:
+
+   export DATASTORE_EMULATOR_HOST=127.0.0.1:8080
+
+Note: Support for Datastore Mode is in preview. If you encounter any bugs please file at https://github.com/firebase/firebase-tools/issues.
+Dev App Server is now running.
+
+ {"metadata":{"emulator":{"name":"firestore"},"message":"127.0.0.1:8080\nDatabase Edition: STANDARD\nDatabase Mode: CLOUD_FIRESTORE\n\nIf you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:\n\n   export FIRESTORE_EMULATOR_HOST=127.0.0.1:8080\n\nIf you are running a Firestore in Datastore Mode project, run:\n\n   export DATASTORE_EMULATOR_HOST=127.0.0.1:8080\n\nNote: Support for Datastore Mode is in preview. If you encounter any bugs please file at https://github.com/firebase/firebase-tools/issues.\nDev App Server is now running.\n\n"}}
+[info] ✔  firestore: Firestore Emulator was started in standard edition. {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator was started in standard edition."}}
+[info] ✔  firestore: Firestore Emulator UI websocket is running on 9150. {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator UI websocket is running on 9150."}}
+[info] i  ui: downloading ui-v1.15.0.zip... {"metadata":{"emulator":{"name":"ui"},"message":"downloading ui-v1.15.0.zip..."}}
+[debug] [2026-07-23T22:38:34.976Z] >>> [apiv2][query] GET https://storage.googleapis.com/firebase-preview-drop/emulator/ui-v1.15.0.zip 
+[debug] [2026-07-23T22:38:35.026Z] <<< [apiv2][status] GET https://storage.googleapis.com/firebase-preview-drop/emulator/ui-v1.15.0.zip 200
+[debug] [2026-07-23T22:38:35.026Z] <<< [apiv2][body] GET https://storage.googleapis.com/firebase-preview-drop/emulator/ui-v1.15.0.zip [stream]
+[debug] [2026-07-23T22:38:35.721Z] Data is 3538469
+[debug] [2026-07-23T22:38:35.721Z] [unzip] Entry: client/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
+[debug] [2026-07-23T22:38:35.721Z] [unzip] Processing entry: client/
+[debug] [2026-07-23T22:38:35.721Z] [unzip] mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/
+[debug] [2026-07-23T22:38:35.721Z] [unzip] Entry: client/favicon-16x16.png (compressed_size=293 bytes, uncompressed_size=293 bytes)
+[debug] [2026-07-23T22:38:35.722Z] [unzip] Processing entry: client/favicon-16x16.png
+[debug] [2026-07-23T22:38:35.722Z] [unzip] else mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2026-07-23T22:38:35.722Z] [unzip] Writing file: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/favicon-16x16.png
+[debug] [2026-07-23T22:38:35.722Z] [unzip] Entry: client/safari-pinned-tab.svg (compressed_size=1433 bytes, uncompressed_size=2611 bytes)
+[debug] [2026-07-23T22:38:35.722Z] [unzip] Processing entry: client/safari-pinned-tab.svg
+[debug] [2026-07-23T22:38:35.722Z] [unzip] else mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2026-07-23T22:38:35.722Z] [unzip] deflating: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/safari-pinned-tab.svg
+[debug] [2026-07-23T22:38:35.724Z] [unzip] Entry: client/favicon.ico (compressed_size=2933 bytes, uncompressed_size=13294 bytes)
+[debug] [2026-07-23T22:38:35.724Z] [unzip] Processing entry: client/favicon.ico
+[debug] [2026-07-23T22:38:35.724Z] [unzip] else mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2026-07-23T22:38:35.724Z] [unzip] deflating: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/favicon.ico
+[debug] [2026-07-23T22:38:35.725Z] [unzip] Entry: client/index.html (compressed_size=1364 bytes, uncompressed_size=3071 bytes)
+[debug] [2026-07-23T22:38:35.725Z] [unzip] Processing entry: client/index.html
+[debug] [2026-07-23T22:38:35.725Z] [unzip] else mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2026-07-23T22:38:35.725Z] [unzip] deflating: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/index.html
+[debug] [2026-07-23T22:38:35.726Z] [unzip] Entry: client/android-chrome-192x192.png (compressed_size=2684 bytes, uncompressed_size=2684 bytes)
+[debug] [2026-07-23T22:38:35.726Z] [unzip] Processing entry: client/android-chrome-192x192.png
+[debug] [2026-07-23T22:38:35.726Z] [unzip] else mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2026-07-23T22:38:35.726Z] [unzip] Writing file: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/android-chrome-192x192.png
+[debug] [2026-07-23T22:38:35.726Z] [unzip] Entry: client/apple-touch-icon.png (compressed_size=2123 bytes, uncompressed_size=2152 bytes)
+[debug] [2026-07-23T22:38:35.726Z] [unzip] Processing entry: client/apple-touch-icon.png
+[debug] [2026-07-23T22:38:35.726Z] [unzip] else mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2026-07-23T22:38:35.726Z] [unzip] deflating: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/apple-touch-icon.png
+[debug] [2026-07-23T22:38:35.726Z] [unzip] Entry: client/android-chrome-512x512.png (compressed_size=5369 bytes, uncompressed_size=5411 bytes)
+[debug] [2026-07-23T22:38:35.726Z] [unzip] Processing entry: client/android-chrome-512x512.png
+[debug] [2026-07-23T22:38:35.727Z] [unzip] else mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2026-07-23T22:38:35.727Z] [unzip] deflating: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/android-chrome-512x512.png
+[debug] [2026-07-23T22:38:35.727Z] [unzip] Entry: client/manifest.json (compressed_size=245 bytes, uncompressed_size=551 bytes)
+[debug] [2026-07-23T22:38:35.727Z] [unzip] Processing entry: client/manifest.json
+[debug] [2026-07-23T22:38:35.727Z] [unzip] else mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2026-07-23T22:38:35.727Z] [unzip] deflating: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/manifest.json
+[debug] [2026-07-23T22:38:35.728Z] [unzip] Entry: client/robots.txt (compressed_size=26 bytes, uncompressed_size=26 bytes)
+[debug] [2026-07-23T22:38:35.728Z] [unzip] Processing entry: client/robots.txt
+[debug] [2026-07-23T22:38:35.728Z] [unzip] else mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2026-07-23T22:38:35.728Z] [unzip] Writing file: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/robots.txt
+[debug] [2026-07-23T22:38:35.728Z] [unzip] Entry: client/mstile-150x150.png (compressed_size=2034 bytes, uncompressed_size=2034 bytes)
+[debug] [2026-07-23T22:38:35.728Z] [unzip] Processing entry: client/mstile-150x150.png
+[debug] [2026-07-23T22:38:35.728Z] [unzip] else mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2026-07-23T22:38:35.728Z] [unzip] Writing file: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/mstile-150x150.png
+[debug] [2026-07-23T22:38:35.729Z] [unzip] Entry: client/assets/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
+[debug] [2026-07-23T22:38:35.729Z] [unzip] Processing entry: client/assets/
+[debug] [2026-07-23T22:38:35.729Z] [unzip] mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/
+[debug] [2026-07-23T22:38:35.729Z] [unzip] Entry: client/assets/index-BX-A56oj.js (compressed_size=582089 bytes, uncompressed_size=2092775 bytes)
+[debug] [2026-07-23T22:38:35.729Z] [unzip] Processing entry: client/assets/index-BX-A56oj.js
+[debug] [2026-07-23T22:38:35.729Z] [unzip] else mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets
+[debug] [2026-07-23T22:38:35.729Z] [unzip] deflating: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/index-BX-A56oj.js
+[debug] [2026-07-23T22:38:35.734Z] [unzip] Entry: client/assets/index-CjB9C900.css (compressed_size=35979 bytes, uncompressed_size=298654 bytes)
+[debug] [2026-07-23T22:38:35.734Z] [unzip] Processing entry: client/assets/index-CjB9C900.css
+[debug] [2026-07-23T22:38:35.734Z] [unzip] else mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets
+[debug] [2026-07-23T22:38:35.734Z] [unzip] deflating: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/index-CjB9C900.css
+[debug] [2026-07-23T22:38:35.734Z] [unzip] Entry: client/assets/index-BX-A56oj.js.map (compressed_size=2362482 bytes, uncompressed_size=10036679 bytes)
+[debug] [2026-07-23T22:38:35.734Z] [unzip] Processing entry: client/assets/index-BX-A56oj.js.map
+[debug] [2026-07-23T22:38:35.734Z] [unzip] else mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets
+[debug] [2026-07-23T22:38:35.734Z] [unzip] deflating: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/index-BX-A56oj.js.map
+[debug] [2026-07-23T22:38:35.753Z] [unzip] Entry: client/assets/extensions/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
+[debug] [2026-07-23T22:38:35.753Z] [unzip] Processing entry: client/assets/extensions/
+[debug] [2026-07-23T22:38:35.753Z] [unzip] mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/extensions/
+[debug] [2026-07-23T22:38:35.753Z] [unzip] Entry: client/assets/extensions/default-extension.png (compressed_size=1646 bytes, uncompressed_size=1657 bytes)
+[debug] [2026-07-23T22:38:35.753Z] [unzip] Processing entry: client/assets/extensions/default-extension.png
+[debug] [2026-07-23T22:38:35.753Z] [unzip] else mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/extensions
+[debug] [2026-07-23T22:38:35.753Z] [unzip] deflating: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/extensions/default-extension.png
+[debug] [2026-07-23T22:38:35.753Z] [unzip] Entry: client/assets/img/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
+[debug] [2026-07-23T22:38:35.754Z] [unzip] Processing entry: client/assets/img/
+[debug] [2026-07-23T22:38:35.754Z] [unzip] mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/img/
+[debug] [2026-07-23T22:38:35.754Z] [unzip] Entry: client/assets/img/database.png (compressed_size=29449 bytes, uncompressed_size=29988 bytes)
+[debug] [2026-07-23T22:38:35.754Z] [unzip] Processing entry: client/assets/img/database.png
+[debug] [2026-07-23T22:38:35.754Z] [unzip] else mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/img
+[debug] [2026-07-23T22:38:35.754Z] [unzip] deflating: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/img/database.png
+[debug] [2026-07-23T22:38:35.754Z] [unzip] Entry: client/assets/provider-icons/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
+[debug] [2026-07-23T22:38:35.754Z] [unzip] Processing entry: client/assets/provider-icons/
+[debug] [2026-07-23T22:38:35.754Z] [unzip] mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/
+[debug] [2026-07-23T22:38:35.754Z] [unzip] Entry: client/assets/provider-icons/auth_service_saml.svg (compressed_size=575 bytes, uncompressed_size=1226 bytes)
+[debug] [2026-07-23T22:38:35.754Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_saml.svg
+[debug] [2026-07-23T22:38:35.754Z] [unzip] else mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2026-07-23T22:38:35.754Z] [unzip] deflating: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_saml.svg
+[debug] [2026-07-23T22:38:35.755Z] [unzip] Entry: client/assets/provider-icons/auth_service_phone.svg (compressed_size=261 bytes, uncompressed_size=414 bytes)
+[debug] [2026-07-23T22:38:35.755Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_phone.svg
+[debug] [2026-07-23T22:38:35.755Z] [unzip] else mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2026-07-23T22:38:35.755Z] [unzip] deflating: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_phone.svg
+[debug] [2026-07-23T22:38:35.755Z] [unzip] Entry: client/assets/provider-icons/auth_service_facebook.svg (compressed_size=289 bytes, uncompressed_size=457 bytes)
+[debug] [2026-07-23T22:38:35.755Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_facebook.svg
+[debug] [2026-07-23T22:38:35.755Z] [unzip] else mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2026-07-23T22:38:35.755Z] [unzip] deflating: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_facebook.svg
+[debug] [2026-07-23T22:38:35.755Z] [unzip] Entry: client/assets/provider-icons/auth_service_game_center.svg (compressed_size=991 bytes, uncompressed_size=3921 bytes)
+[debug] [2026-07-23T22:38:35.755Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_game_center.svg
+[debug] [2026-07-23T22:38:35.755Z] [unzip] else mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2026-07-23T22:38:35.755Z] [unzip] deflating: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_game_center.svg
+[debug] [2026-07-23T22:38:35.755Z] [unzip] Entry: client/assets/provider-icons/auth_service_apple.svg (compressed_size=230 bytes, uncompressed_size=334 bytes)
+[debug] [2026-07-23T22:38:35.755Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_apple.svg
+[debug] [2026-07-23T22:38:35.755Z] [unzip] else mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2026-07-23T22:38:35.756Z] [unzip] deflating: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_apple.svg
+[debug] [2026-07-23T22:38:35.756Z] [unzip] Entry: client/assets/provider-icons/auth_service_github.svg (compressed_size=466 bytes, uncompressed_size=838 bytes)
+[debug] [2026-07-23T22:38:35.756Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_github.svg
+[debug] [2026-07-23T22:38:35.756Z] [unzip] else mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2026-07-23T22:38:35.756Z] [unzip] deflating: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_github.svg
+[debug] [2026-07-23T22:38:35.756Z] [unzip] Entry: client/assets/provider-icons/auth_service_mslive.svg (compressed_size=203 bytes, uncompressed_size=378 bytes)
+[debug] [2026-07-23T22:38:35.756Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_mslive.svg
+[debug] [2026-07-23T22:38:35.756Z] [unzip] else mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2026-07-23T22:38:35.756Z] [unzip] deflating: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_mslive.svg
+[debug] [2026-07-23T22:38:35.756Z] [unzip] Entry: client/assets/provider-icons/auth_service_yahoo.svg (compressed_size=577 bytes, uncompressed_size=1182 bytes)
+[debug] [2026-07-23T22:38:35.756Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_yahoo.svg
+[debug] [2026-07-23T22:38:35.756Z] [unzip] else mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2026-07-23T22:38:35.756Z] [unzip] deflating: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_yahoo.svg
+[debug] [2026-07-23T22:38:35.757Z] [unzip] Entry: client/assets/provider-icons/auth_service_twitter.svg (compressed_size=444 bytes, uncompressed_size=751 bytes)
+[debug] [2026-07-23T22:38:35.757Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_twitter.svg
+[debug] [2026-07-23T22:38:35.757Z] [unzip] else mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2026-07-23T22:38:35.757Z] [unzip] deflating: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_twitter.svg
+[debug] [2026-07-23T22:38:35.757Z] [unzip] Entry: client/assets/provider-icons/auth_service_play_games.svg (compressed_size=565 bytes, uncompressed_size=1173 bytes)
+[debug] [2026-07-23T22:38:35.757Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_play_games.svg
+[debug] [2026-07-23T22:38:35.757Z] [unzip] else mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2026-07-23T22:38:35.757Z] [unzip] deflating: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_play_games.svg
+[debug] [2026-07-23T22:38:35.757Z] [unzip] Entry: client/assets/provider-icons/auth_service_email.svg (compressed_size=228 bytes, uncompressed_size=326 bytes)
+[debug] [2026-07-23T22:38:35.757Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_email.svg
+[debug] [2026-07-23T22:38:35.757Z] [unzip] else mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2026-07-23T22:38:35.757Z] [unzip] deflating: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_email.svg
+[debug] [2026-07-23T22:38:35.758Z] [unzip] Entry: client/assets/provider-icons/auth_service_google.svg (compressed_size=409 bytes, uncompressed_size=720 bytes)
+[debug] [2026-07-23T22:38:35.758Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_google.svg
+[debug] [2026-07-23T22:38:35.758Z] [unzip] else mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2026-07-23T22:38:35.758Z] [unzip] deflating: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_google.svg
+[debug] [2026-07-23T22:38:35.758Z] [unzip] Entry: client/assets/provider-icons/auth_service_oidc.svg (compressed_size=414 bytes, uncompressed_size=858 bytes)
+[debug] [2026-07-23T22:38:35.758Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_oidc.svg
+[debug] [2026-07-23T22:38:35.758Z] [unzip] else mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2026-07-23T22:38:35.758Z] [unzip] deflating: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_oidc.svg
+[debug] [2026-07-23T22:38:35.758Z] [unzip] Entry: client/browserconfig.xml (compressed_size=491 bytes, uncompressed_size=822 bytes)
+[debug] [2026-07-23T22:38:35.758Z] [unzip] Processing entry: client/browserconfig.xml
+[debug] [2026-07-23T22:38:35.758Z] [unzip] else mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2026-07-23T22:38:35.758Z] [unzip] deflating: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/browserconfig.xml
+[debug] [2026-07-23T22:38:35.759Z] [unzip] Entry: client/favicon-32x32.png (compressed_size=475 bytes, uncompressed_size=475 bytes)
+[debug] [2026-07-23T22:38:35.759Z] [unzip] Processing entry: client/favicon-32x32.png
+[debug] [2026-07-23T22:38:35.759Z] [unzip] else mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2026-07-23T22:38:35.759Z] [unzip] Writing file: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/client/favicon-32x32.png
+[debug] [2026-07-23T22:38:35.759Z] [unzip] Entry: server/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
+[debug] [2026-07-23T22:38:35.759Z] [unzip] Processing entry: server/
+[debug] [2026-07-23T22:38:35.759Z] [unzip] mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/server/
+[debug] [2026-07-23T22:38:35.759Z] [unzip] Entry: server/server.mjs.map (compressed_size=217845 bytes, uncompressed_size=944978 bytes)
+[debug] [2026-07-23T22:38:35.759Z] [unzip] Processing entry: server/server.mjs.map
+[debug] [2026-07-23T22:38:35.759Z] [unzip] else mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/server
+[debug] [2026-07-23T22:38:35.759Z] [unzip] deflating: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/server/server.mjs.map
+[debug] [2026-07-23T22:38:35.761Z] [unzip] Entry: server/server.mjs (compressed_size=276407 bytes, uncompressed_size=933701 bytes)
+[debug] [2026-07-23T22:38:35.761Z] [unzip] Processing entry: server/server.mjs
+[debug] [2026-07-23T22:38:35.761Z] [unzip] else mkdir: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/server
+[debug] [2026-07-23T22:38:35.761Z] [unzip] deflating: /Users/spiros.kafkias/.cache/firebase/emulators/ui-v1.15.0/server/server.mjs
+[info] i  functions: Watching "/Users/spiros.kafkias/Documents/repositories/mle-pickup/functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"/Users/spiros.kafkias/Documents/repositories/mle-pickup/functions\" for Cloud Functions..."}}
+[debug] [2026-07-23T22:38:35.764Z] Validating nodejs source
+[warn] ⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] ⚠  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2026-07-23T22:38:36.057Z] > [functions] package.json contents: {
+  "name": "mle-functions",
+  "description": "Cloud Functions for MLE — server-authoritative match logic and notifications.",
+  "engines": {
+    "node": "20"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "tsc",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "dependencies": {
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^6.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0"
+  },
+  "private": true
+}
+[debug] [2026-07-23T22:38:36.057Z] Building nodejs source
+[debug] [2026-07-23T22:38:36.057Z] Failed to find version of module node: reached end of search path /Users/spiros.kafkias/Documents/repositories/mle-pickup/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "20" doesn't match your global version "26". Using node@26 from host. 
+[debug] [2026-07-23T22:38:36.057Z] Could not find functions.yaml. Must use http discovery
+[debug] [2026-07-23T22:38:36.059Z] Found firebase-functions binary at '/Users/spiros.kafkias/Documents/repositories/mle-pickup/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8737
+
+[debug] [2026-07-23T22:38:36.521Z] Got response from /__/functions.yaml {"endpoints":{"createMatch":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"callableTrigger":{},"entryPoint":"createMatch"},"joinMatch":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"callableTrigger":{},"entryPoint":"joinMatch"},"leaveMatch":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"callableTrigger":{},"entryPoint":"leaveMatch"},"cancelMatch":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"callableTrigger":{},"entryPoint":"cancelMatch"},"onMatchStatusChange":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"eventTrigger":{"eventType":"google.cloud.firestore.document.v1.updated","eventFilters":{"database":"(default)","namespace":"(default)"},"eventFilterPathPatterns":{"document":"matches/{matchId}"},"retry":false},"entryPoint":"onMatchStatusChange"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[info] ✔  functions: Loaded functions definitions from source: createMatch, joinMatch, leaveMatch, cancelMatch, onMatchStatusChange. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: createMatch, joinMatch, leaveMatch, cancelMatch, onMatchStatusChange."}}
+[info] ✔  functions[us-central1-createMatch]: http function initialized (http://127.0.0.1:5001/demo-mle/us-central1/createMatch). {"metadata":{"emulator":{"name":"functions"},"message":"http function initialized (http://127.0.0.1:5001/demo-mle/us-central1/createMatch)."}}
+[info] ✔  functions[us-central1-joinMatch]: http function initialized (http://127.0.0.1:5001/demo-mle/us-central1/joinMatch). {"metadata":{"emulator":{"name":"functions"},"message":"http function initialized (http://127.0.0.1:5001/demo-mle/us-central1/joinMatch)."}}
+[info] ✔  functions[us-central1-leaveMatch]: http function initialized (http://127.0.0.1:5001/demo-mle/us-central1/leaveMatch). {"metadata":{"emulator":{"name":"functions"},"message":"http function initialized (http://127.0.0.1:5001/demo-mle/us-central1/leaveMatch)."}}
+[info] ✔  functions[us-central1-cancelMatch]: http function initialized (http://127.0.0.1:5001/demo-mle/us-central1/cancelMatch). {"metadata":{"emulator":{"name":"functions"},"message":"http function initialized (http://127.0.0.1:5001/demo-mle/us-central1/cancelMatch)."}}
+[debug] [2026-07-23T22:38:39.537Z] Found a v2 firestore trigger.
+[debug] [2026-07-23T22:38:39.537Z] addFirestoreTrigger "{\"eventType\":\"google.cloud.firestore.document.v1.updated\",\"database\":\"(default)\",\"namespace\":\"(default)\",\"document\":{\"value\":\"matches/{matchId}\",\"matchType\":\"PATH_PATTERN\"}}"
+[debug] [2026-07-23T22:38:39.538Z] >>> [apiv2][query] POST http://127.0.0.1:8080/emulator/v1/projects/demo-mle/eventarcTrigger?eventarcTriggerId=us-central1-onMatchStatusChange-0 [none]
+[debug] [2026-07-23T22:38:39.538Z] >>> [apiv2][body] POST http://127.0.0.1:8080/emulator/v1/projects/demo-mle/eventarcTrigger?eventarcTriggerId=us-central1-onMatchStatusChange-0 "{\"eventType\":\"google.cloud.firestore.document.v1.updated\",\"database\":\"(default)\",\"namespace\":\"(default)\",\"document\":{\"value\":\"matches/{matchId}\",\"matchType\":\"PATH_PATTERN\"}}"
+[debug] [2026-07-23T22:38:39.543Z] Jul 24, 2026 1:38:39 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:38:39 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:38:39.601Z] Jul 24, 2026 1:38:39 AM io.grpc.netty.TcpMetrics loadEpollInfo
+INFO: Epoll available during static init of TcpMetrics:false
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:38:39 AM io.grpc.netty.TcpMetrics loadEpollInfo\nINFO: Epoll available during static init of TcpMetrics:false\n"}}
+[debug] [2026-07-23T22:38:39.609Z] Jul 24, 2026 1:38:39 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:38:39 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:38:39.798Z] <<< [apiv2][status] POST http://127.0.0.1:8080/emulator/v1/projects/demo-mle/eventarcTrigger?eventarcTriggerId=us-central1-onMatchStatusChange-0 200
+[debug] [2026-07-23T22:38:39.798Z] <<< [apiv2][body] POST http://127.0.0.1:8080/emulator/v1/projects/demo-mle/eventarcTrigger?eventarcTriggerId=us-central1-onMatchStatusChange-0 {"eventType":"google.cloud.firestore.document.v1.updated","database":"(default)","namespace":"(default)","document":{"value":"matches/{matchId}","matchType":"PATH_PATTERN"}}
+[info] ✔  functions[us-central1-onMatchStatusChange]: firestore function initialized. {"metadata":{"emulator":{"name":"functions"},"message":"firestore function initialized."}}
+[debug] [2026-07-23T22:38:39.801Z] Could not find VSCode notification endpoint: TypeError: fetch failed. If you are not running the Firebase SQL Connect VSCode extension, this is expected and not an issue.
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌────────────────┬────────────────┬─────────────────────────────────┐
+│ Emulator       │ Host:Port      │ View in Emulator UI             │
+├────────────────┼────────────────┼─────────────────────────────────┤
+│ Authentication │ 127.0.0.1:9099 │ http://127.0.0.1:4000/auth      │
+├────────────────┼────────────────┼─────────────────────────────────┤
+│ Functions      │ 127.0.0.1:5001 │ http://127.0.0.1:4000/functions │
+├────────────────┼────────────────┼─────────────────────────────────┤
+│ Firestore      │ 127.0.0.1:8080 │ http://127.0.0.1:4000/firestore │
+└────────────────┴────────────────┴─────────────────────────────────┘
+  Emulator Hub host: 127.0.0.1 port: 4400
+  Other reserved ports: 4500, 9150
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2026-07-23T22:46:07.344Z] >>> [apiv2][query] POST http://127.0.0.1:5001/functions/projects/demo-mle/trigger_multicast [none]
+[debug] [2026-07-23T22:46:07.344Z] >>> [apiv2][body] POST http://127.0.0.1:5001/functions/projects/demo-mle/trigger_multicast {"eventId":"7e6a47a9-073f-455c-b3db-4410a952d787","eventType":"providers/firebase.auth/eventTypes/user.create","resource":{"name":"projects/demo-mle","service":"firebaseauth.googleapis.com"},"params":{},"timestamp":"2026-07-23T22:46:07.343Z","data":{"uid":"lbFMj53uXli1iBV6FYTFKkz9wfn0","email":"test@test.com","emailVerified":false,"metadata":{"creationTime":"2026-07-23T22:46:07.343Z","lastSignInTime":"2026-07-23T22:46:07.343Z"},"customClaims":{},"providerData":[{"rawId":"test@test.com","providerId":"password","email":"test@test.com","federatedId":"test@test.com"}]}}
+[debug] [2026-07-23T22:46:07.351Z] <<< [apiv2][status] POST http://127.0.0.1:5001/functions/projects/demo-mle/trigger_multicast 200
+[debug] [2026-07-23T22:46:07.351Z] <<< [apiv2][body] POST http://127.0.0.1:5001/functions/projects/demo-mle/trigger_multicast {"status":"multicast_acknowledged"}
+[debug] [2026-07-23T22:46:07.410Z] Jul 24, 2026 1:46:07 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:46:07 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:46:07.567Z] Jul 24, 2026 1:46:07 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:46:07 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:46:07.577Z] Jul 24, 2026 1:46:07 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:46:07 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:46:07.578Z] Jul 24, 2026 1:46:07 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:46:07 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:46:07.595Z] Jul 24, 2026 1:46:07 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:46:07 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:46:07.607Z] Jul 24, 2026 1:46:07 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:46:07 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:46:52.595Z] Jul 24, 2026 1:46:52 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:46:52 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:47:07.665Z] Jul 24, 2026 1:47:07 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:47:07 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:47:07.670Z] Jul 24, 2026 1:47:07 AM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreWriteHandler onClose
+INFO: channel closed
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:47:07 AM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreWriteHandler onClose\nINFO: channel closed\n"}}
+[debug] [2026-07-23T22:47:52.623Z] Jul 24, 2026 1:47:52 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:47:52 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:48:37.642Z] Jul 24, 2026 1:48:37 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:48:37 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:49:37.664Z] Jul 24, 2026 1:49:37 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:49:37 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:50:37.676Z] Jul 24, 2026 1:50:37 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:50:37 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:50:59.202Z] Jul 24, 2026 1:50:59 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:50:59 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:50:59.221Z] Jul 24, 2026 1:50:59 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:50:59 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:51:00.375Z] Jul 24, 2026 1:51:00 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:51:00 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:51:00.386Z] Jul 24, 2026 1:51:00 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:51:00 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:51:02.000Z] Jul 24, 2026 1:51:02 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:51:02 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:51:02.008Z] Jul 24, 2026 1:51:02 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:51:02 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:51:02.109Z] Jul 24, 2026 1:51:02 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:51:02 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:51:02.120Z] Jul 24, 2026 1:51:02 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:51:02 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:51:21.124Z] [work-queue] {"queuedWork":["/demo-mle/us-central1/createMatch-2026-07-23T22:51:21.123Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2026-07-23T22:51:21.124Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/demo-mle/us-central1/createMatch-2026-07-23T22:51:21.123Z"],"workRunningCount":1}
+[debug] [2026-07-23T22:51:21.125Z] Accepted request OPTIONS /demo-mle/us-central1/createMatch --> us-central1-createMatch
+[debug] [2026-07-23T22:51:21.127Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2026-07-23T22:51:21.127Z] [functions] Got req.url=/demo-mle/us-central1/createMatch, mapping to path=/ {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/demo-mle/us-central1/createMatch, mapping to path=/"}}
+[debug] [2026-07-23T22:51:21.131Z] [worker-pool] addWorker(us-central1-createMatch) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-createMatch)"}}
+[debug] [2026-07-23T22:51:21.131Z] [worker-pool] Adding worker with key us-central1-createMatch, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-createMatch, total=1"}}
+[debug] [2026-07-23T22:51:21.661Z] [runtime-status] [99879] Resolved module firebase-admin {"declared":true,"installed":true,"version":"12.7.0","resolution":"/Users/spiros.kafkias/Documents/repositories/mle-pickup/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createMatch"},"extension":{},"message":"[runtime-status] [99879] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"12.7.0\",\"resolution\":\"/Users/spiros.kafkias/Documents/repositories/mle-pickup/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2026-07-23T22:51:21.661Z] [runtime-status] [99879] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.6.0","resolution":"/Users/spiros.kafkias/Documents/repositories/mle-pickup/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createMatch"},"extension":{},"message":"[runtime-status] [99879] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.6.0\",\"resolution\":\"/Users/spiros.kafkias/Documents/repositories/mle-pickup/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
+[debug] [2026-07-23T22:51:21.661Z] [runtime-status] [99879] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createMatch"},"extension":{},"message":"[runtime-status] [99879] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2026-07-23T22:51:21.661Z] [runtime-status] [99879] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.6.0","resolution":"/Users/spiros.kafkias/Documents/repositories/mle-pickup/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createMatch"},"extension":{},"message":"[runtime-status] [99879] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.6.0\",\"resolution\":\"/Users/spiros.kafkias/Documents/repositories/mle-pickup/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
+[debug] [2026-07-23T22:51:21.741Z] [runtime-status] [99879] Resolved module firebase-admin {"declared":true,"installed":true,"version":"12.7.0","resolution":"/Users/spiros.kafkias/Documents/repositories/mle-pickup/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createMatch"},"extension":{},"message":"[runtime-status] [99879] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"12.7.0\",\"resolution\":\"/Users/spiros.kafkias/Documents/repositories/mle-pickup/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2026-07-23T22:51:21.742Z] [runtime-status] [99879] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.6.0","resolution":"/Users/spiros.kafkias/Documents/repositories/mle-pickup/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createMatch"},"extension":{},"message":"[runtime-status] [99879] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.6.0\",\"resolution\":\"/Users/spiros.kafkias/Documents/repositories/mle-pickup/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
+[debug] [2026-07-23T22:51:21.804Z] [runtime-status] [99879] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"12.7.0","resolution":"/Users/spiros.kafkias/Documents/repositories/mle-pickup/functions/node_modules/firebase-admin/lib/index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createMatch"},"extension":{},"message":"[runtime-status] [99879] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"12.7.0\",\"resolution\":\"/Users/spiros.kafkias/Documents/repositories/mle-pickup/functions/node_modules/firebase-admin/lib/index.js\"}}"}}
+[debug] [2026-07-23T22:51:21.810Z] [runtime-status] [99879] Functions runtime initialized. {"cwd":"/Users/spiros.kafkias/Documents/repositories/mle-pickup/functions","node_version":"26.5.0"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createMatch"},"extension":{},"message":"[runtime-status] [99879] Functions runtime initialized. {\"cwd\":\"/Users/spiros.kafkias/Documents/repositories/mle-pickup/functions\",\"node_version\":\"26.5.0\"}"}}
+[debug] [2026-07-23T22:51:21.810Z] [runtime-status] [99879] Listening to port: /var/folders/h2/hqw8w_0x7m3b6ywqbhf60p8r0000gr/T/fire_emu_ac55d638b3e88397.sock {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createMatch"},"extension":{},"message":"[runtime-status] [99879] Listening to port: /var/folders/h2/hqw8w_0x7m3b6ywqbhf60p8r0000gr/T/fire_emu_ac55d638b3e88397.sock"}}
+[debug] [2026-07-23T22:51:21.844Z] [worker-us-central1-createMatch-c55ff0d3-ae96-4375-804c-2fef6a7692c3]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createMatch"},"extension":{},"message":"[worker-us-central1-createMatch-c55ff0d3-ae96-4375-804c-2fef6a7692c3]: IDLE"}}
+[debug] [2026-07-23T22:51:21.844Z] [worker-pool] submitRequest(triggerId=us-central1-createMatch) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-createMatch)"}}
+[info] i  functions: Beginning execution of "us-central1-createMatch" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createMatch"},"extension":{},"message":"Beginning execution of \"us-central1-createMatch\""}}
+[debug] [2026-07-23T22:51:21.844Z] [worker-us-central1-createMatch-c55ff0d3-ae96-4375-804c-2fef6a7692c3]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createMatch"},"extension":{},"message":"[worker-us-central1-createMatch-c55ff0d3-ae96-4375-804c-2fef6a7692c3]: BUSY"}}
+[debug] [2026-07-23T22:51:21.846Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createMatch"},"extension":{},"message":"Finishing up request with event=finish"}}
+[info] i  functions: Finished "us-central1-createMatch" in 1.407625ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createMatch"},"extension":{},"message":"Finished \"us-central1-createMatch\" in 1.407625ms"}}
+[debug] [2026-07-23T22:51:21.846Z] [worker-us-central1-createMatch-c55ff0d3-ae96-4375-804c-2fef6a7692c3]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createMatch"},"extension":{},"message":"[worker-us-central1-createMatch-c55ff0d3-ae96-4375-804c-2fef6a7692c3]: IDLE"}}
+[debug] [2026-07-23T22:51:21.846Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createMatch"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2026-07-23T22:51:21.846Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2026-07-23T22:51:21.847Z] [work-queue] {"queuedWork":["/demo-mle/us-central1/createMatch-2026-07-23T22:51:21.847Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2026-07-23T22:51:21.847Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/demo-mle/us-central1/createMatch-2026-07-23T22:51:21.847Z"],"workRunningCount":1}
+[debug] [2026-07-23T22:51:21.847Z] Accepted request POST /demo-mle/us-central1/createMatch --> us-central1-createMatch
+[debug] [2026-07-23T22:51:21.847Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2026-07-23T22:51:21.847Z] [functions] Got req.url=/demo-mle/us-central1/createMatch, mapping to path=/ {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/demo-mle/us-central1/createMatch, mapping to path=/"}}
+[debug] [2026-07-23T22:51:21.847Z] [worker-pool] submitRequest(triggerId=us-central1-createMatch) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-createMatch)"}}
+[info] i  functions: Beginning execution of "us-central1-createMatch" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createMatch"},"extension":{},"message":"Beginning execution of \"us-central1-createMatch\""}}
+[debug] [2026-07-23T22:51:21.847Z] [worker-us-central1-createMatch-c55ff0d3-ae96-4375-804c-2fef6a7692c3]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createMatch"},"extension":{},"message":"[worker-us-central1-createMatch-c55ff0d3-ae96-4375-804c-2fef6a7692c3]: BUSY"}}
+[info] >  {"verifications":{"app":"MISSING","auth":"VALID"},"logging.googleapis.com/labels":{"firebase-log-type":"callable-request-verification"},"severity":"DEBUG","message":"Callable request verification passed"} {"user":{"verifications":{"app":"MISSING","auth":"VALID"},"logging.googleapis.com/labels":{"firebase-log-type":"callable-request-verification"},"severity":"DEBUG","message":"Callable request verification passed"},"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createMatch"},"extension":{},"message":">  {\"verifications\":{\"app\":\"MISSING\",\"auth\":\"VALID\"},\"logging.googleapis.com/labels\":{\"firebase-log-type\":\"callable-request-verification\"},\"severity\":\"DEBUG\",\"message\":\"Callable request verification passed\"}"}}
+[debug] [2026-07-23T22:51:21.993Z] Jul 24, 2026 1:51:21 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:51:21 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:51:22.012Z] Jul 24, 2026 1:51:22 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:51:22 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:51:22.017Z] Jul 24, 2026 1:51:22 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:51:22 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:51:22.018Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createMatch"},"extension":{},"message":"Finishing up request with event=finish"}}
+[info] i  functions: Finished "us-central1-createMatch" in 171.218375ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createMatch"},"extension":{},"message":"Finished \"us-central1-createMatch\" in 171.218375ms"}}
+[debug] [2026-07-23T22:51:22.018Z] [worker-us-central1-createMatch-c55ff0d3-ae96-4375-804c-2fef6a7692c3]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createMatch"},"extension":{},"message":"[worker-us-central1-createMatch-c55ff0d3-ae96-4375-804c-2fef6a7692c3]: IDLE"}}
+[debug] [2026-07-23T22:51:22.018Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-createMatch"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2026-07-23T22:51:22.018Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2026-07-23T22:51:25.436Z] Jul 24, 2026 1:51:25 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:51:25 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:51:25.457Z] Jul 24, 2026 1:51:25 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:51:25 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:51:25.463Z] Jul 24, 2026 1:51:25 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:51:25 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:51:33.598Z] Jul 24, 2026 1:51:33 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:51:33 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:51:33.606Z] Jul 24, 2026 1:51:33 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:51:33 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:51:45.295Z] Jul 24, 2026 1:51:45 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:51:45 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:51:45.307Z] Jul 24, 2026 1:51:45 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:51:45 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:51:52.684Z] Jul 24, 2026 1:51:52 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:51:52 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:51:59.421Z] Jul 24, 2026 1:51:59 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:51:59 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:52:23.720Z] Jul 24, 2026 1:52:23 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:52:23 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:52:23.730Z] Jul 24, 2026 1:52:23 AM com.google.cloud.datastore.emulator.impl.util.WrappedStreamObserver onError
+WARNING: Operation failed: 
+false for 'list' @ L33
+com.google.cloud.datastore.core.exception.DatastoreException: 
+false for 'list' @ L33
+	at com.google.cloud.datastore.core.exception.DatastoreException$Builder.build(DatastoreException.java:152)
+	at com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.verboseError(DefaultEmulatorRulesAuthorizer.java:349)
+	at com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.withVerboseErrors(DefaultEmulatorRulesAuthorizer.java:326)
+	at com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.checkQuery(DefaultEmulatorRulesAuthorizer.java:193)
+	at com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.ruleAuthorizeAndReadEntities(FirestoreEmulatorHelper.java:811)
+	at com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.snapshotQuery(FirestoreEmulatorHelper.java:661)
+	at com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.lambda$query$0(FirestoreEmulatorHelper.java:645)
+	at com.google.cloud.datastore.emulator.impl.transactions.EmulatorTransactionManager$ReadOnlyTransaction.fold(EmulatorTransactionManager.java:432)
+	at com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.query(FirestoreEmulatorHelper.java:643)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.listDocuments(CloudFirestoreV1.java:364)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1Router.listDocuments(CloudFirestoreV1Router.java:138)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1Router.getOrListDocuments(CloudFirestoreV1Router.java:122)
+	at com.google.cloud.datastore.emulator.firestore.v1.FirestoreV1GrpcAdapter$1.lambda$getOrListDocuments$0(FirestoreV1GrpcAdapter.java:108)
+	at com.google.cloud.datastore.emulator.firestore.v1.FirestoreV1GrpcAdapter.unary(FirestoreV1GrpcAdapter.java:72)
+	at com.google.cloud.datastore.emulator.firestore.v1.FirestoreV1GrpcAdapter$1.getOrListDocuments(FirestoreV1GrpcAdapter.java:108)
+	at com.google.firestore.v1.FirestoreGrpc$MethodHandlers.invoke(FirestoreGrpc.java:1376)
+	at io.grpc.stub.ServerCalls$UnaryServerCallHandler$UnaryServerCallListener.onHalfClose(ServerCalls.java:182)
+	at io.grpc.PartialForwardingServerCallListener.onHalfClose(PartialForwardingServerCallListener.java:35)
+	at io.grpc.ForwardingServerCallListener.onHalfClose(ForwardingServerCallListener.java:23)
+	at io.grpc.ForwardingServerCallListener$SimpleForwardingServerCallListener.onHalfClose(ForwardingServerCallListener.java:40)
+	at io.grpc.Contexts$ContextualizedServerCallListener.onHalfClose(Contexts.java:86)
+	at io.grpc.PartialForwardingServerCallListener.onHalfClose(PartialForwardingServerCallListener.java:35)
+	at io.grpc.ForwardingServerCallListener.onHalfClose(ForwardingServerCallListener.java:23)
+	at io.grpc.ForwardingServerCallListener$SimpleForwardingServerCallListener.onHalfClose(ForwardingServerCallListener.java:40)
+	at io.grpc.Contexts$ContextualizedServerCallListener.onHalfClose(Contexts.java:86)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.halfClosed(ServerCallImpl.java:356)
+	at io.grpc.internal.ServerImpl$JumpToApplicationThreadServerStreamListener$1HalfClosed.runInContext(ServerImpl.java:861)
+	at io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)
+	at io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:52:23 AM com.google.cloud.datastore.emulator.impl.util.WrappedStreamObserver onError\nWARNING: Operation failed: \nfalse for 'list' @ L33\ncom.google.cloud.datastore.core.exception.DatastoreException: \nfalse for 'list' @ L33\n\tat com.google.cloud.datastore.core.exception.DatastoreException$Builder.build(DatastoreException.java:152)\n\tat com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.verboseError(DefaultEmulatorRulesAuthorizer.java:349)\n\tat com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.withVerboseErrors(DefaultEmulatorRulesAuthorizer.java:326)\n\tat com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.checkQuery(DefaultEmulatorRulesAuthorizer.java:193)\n\tat com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.ruleAuthorizeAndReadEntities(FirestoreEmulatorHelper.java:811)\n\tat com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.snapshotQuery(FirestoreEmulatorHelper.java:661)\n\tat com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.lambda$query$0(FirestoreEmulatorHelper.java:645)\n\tat com.google.cloud.datastore.emulator.impl.transactions.EmulatorTransactionManager$ReadOnlyTransaction.fold(EmulatorTransactionManager.java:432)\n\tat com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.query(FirestoreEmulatorHelper.java:643)\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.listDocuments(CloudFirestoreV1.java:364)\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1Router.listDocuments(CloudFirestoreV1Router.java:138)\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1Router.getOrListDocuments(CloudFirestoreV1Router.java:122)\n\tat com.google.cloud.datastore.emulator.firestore.v1.FirestoreV1GrpcAdapter$1.lambda$getOrListDocuments$0(FirestoreV1GrpcAdapter.java:108)\n\tat com.google.cloud.datastore.emulator.firestore.v1.FirestoreV1GrpcAdapter.unary(FirestoreV1GrpcAdapter.java:72)\n\tat com.google.cloud.datastore.emulator.firestore.v1.FirestoreV1GrpcAdapter$1.getOrListDocuments(FirestoreV1GrpcAdapter.java:108)\n\tat com.google.firestore.v1.FirestoreGrpc$MethodHandlers.invoke(FirestoreGrpc.java:1376)\n\tat io.grpc.stub.ServerCalls$UnaryServerCallHandler$UnaryServerCallListener.onHalfClose(ServerCalls.java:182)\n\tat io.grpc.PartialForwardingServerCallListener.onHalfClose(PartialForwardingServerCallListener.java:35)\n\tat io.grpc.ForwardingServerCallListener.onHalfClose(ForwardingServerCallListener.java:23)\n\tat io.grpc.ForwardingServerCallListener$SimpleForwardingServerCallListener.onHalfClose(ForwardingServerCallListener.java:40)\n\tat io.grpc.Contexts$ContextualizedServerCallListener.onHalfClose(Contexts.java:86)\n\tat io.grpc.PartialForwardingServerCallListener.onHalfClose(PartialForwardingServerCallListener.java:35)\n\tat io.grpc.ForwardingServerCallListener.onHalfClose(ForwardingServerCallListener.java:23)\n\tat io.grpc.ForwardingServerCallListener$SimpleForwardingServerCallListener.onHalfClose(ForwardingServerCallListener.java:40)\n\tat io.grpc.Contexts$ContextualizedServerCallListener.onHalfClose(Contexts.java:86)\n\tat io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.halfClosed(ServerCallImpl.java:356)\n\tat io.grpc.internal.ServerImpl$JumpToApplicationThreadServerStreamListener$1HalfClosed.runInContext(ServerImpl.java:861)\n\tat io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)\n\tat io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)\n\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)\n\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)\n\tat java.base/java.lang.Thread.run(Thread.java:1583)\n\n"}}
+[debug] [2026-07-23T22:52:23.731Z] Jul 24, 2026 1:52:23 AM io.gapi.emulators.netty.HttpHandler$1 onError
+INFO: Exception when handling request: PERMISSION_DENIED: 
+false for 'list' @ L33
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:52:23 AM io.gapi.emulators.netty.HttpHandler$1 onError\nINFO: Exception when handling request: PERMISSION_DENIED: \nfalse for 'list' @ L33\n"}}
+[debug] [2026-07-23T22:52:35.517Z] Jul 24, 2026 1:52:35 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:52:35 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2026-07-23T22:52:35.517Z] Jul 24, 2026 1:52:35 AM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /emulator/v1/projects/demo-mle/databases/(default)/documents/matches
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:52:35 AM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /emulator/v1/projects/demo-mle/databases/(default)/documents/matches\n"}}
+[debug] [2026-07-23T22:52:39.265Z] Jul 24, 2026 1:52:39 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Jul 24, 2026 1:52:39 AM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}

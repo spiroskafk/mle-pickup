@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../services/auth_service.dart';
+import 'register_screen.dart';
 
 /// Email + Google sign-in. Registration is a v1 follow-up screen; for now this
 /// handles the sign-in path and Google.
@@ -134,6 +135,16 @@ class _SignInScreenState extends State<SignInScreen> {
                       onPressed: _busy ? null : _signInWithGoogle,
                       icon: const Icon(Icons.account_circle_outlined),
                       label: const Text('Continue with Google'),
+                    ),
+                    const SizedBox(height: 8),
+                    TextButton(
+                      onPressed: _busy
+                          ? null
+                          : () => Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (_) => const RegisterScreen()),
+                              ),
+                      child: const Text("New here? Create an account"),
                     ),
                   ],
                 ),
