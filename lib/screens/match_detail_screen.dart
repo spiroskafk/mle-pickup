@@ -60,16 +60,14 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
             children: [
               Row(
                 children: [
-                  Text(match.sport.emoji,
-                      style: const TextStyle(fontSize: 40)),
+                  Text(match.sport.emoji, style: const TextStyle(fontSize: 40)),
                   const SizedBox(width: 12),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(match.sport.label,
-                            style:
-                                Theme.of(context).textTheme.headlineSmall),
+                            style: Theme.of(context).textTheme.headlineSmall),
                         Text(match.venue.name),
                       ],
                     ),
@@ -106,8 +104,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
       return OutlinedButton.icon(
         onPressed: _busy
             ? null
-            : () => _action(
-                () => _repo.cancel(match.id), 'Could not cancel.'),
+            : () => _action(() => _repo.cancel(match.id), 'Could not cancel.'),
         icon: const Icon(Icons.close),
         label: const Text('Cancel match'),
       );
@@ -116,8 +113,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
       return OutlinedButton.icon(
         onPressed: _busy
             ? null
-            : () => _action(
-                () => _repo.leave(match.id), 'Could not leave.'),
+            : () => _action(() => _repo.leave(match.id), 'Could not leave.'),
         icon: const Icon(Icons.exit_to_app),
         label: const Text('Leave match'),
       );

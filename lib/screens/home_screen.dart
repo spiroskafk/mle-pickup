@@ -70,8 +70,7 @@ class _MatchTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final missing = match.spotsMissing;
     return ListTile(
-      leading: Text(match.sport.emoji,
-          style: const TextStyle(fontSize: 28)),
+      leading: Text(match.sport.emoji, style: const TextStyle(fontSize: 28)),
       title: Text('${match.sport.label} · ${match.venue.name}'),
       subtitle: Text(_subtitle()),
       trailing: missing > 0
