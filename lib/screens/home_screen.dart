@@ -89,7 +89,7 @@ class _MatchTile extends StatelessWidget {
 
   String _subtitle() {
     final d = match.startAt;
-    final two = (int n) => n.toString().padLeft(2, '0');
+    String two(int n) => n.toString().padLeft(2, '0');
     return '${two(d.day)}/${two(d.month)} ${two(d.hour)}:${two(d.minute)}'
         ' · ${match.playerIds.length}/${match.totalPlayers} in';
   }

@@ -123,7 +123,7 @@ class _CreateMatchScreenState extends State<CreateMatchScreen> {
           padding: const EdgeInsets.all(16),
           children: [
             DropdownButtonFormField<Sport>(
-              value: _sport,
+              initialValue: _sport,
               decoration: const InputDecoration(
                 labelText: 'Sport',
                 border: OutlineInputBorder(),
