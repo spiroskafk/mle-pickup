@@ -3,8 +3,11 @@
 > **MLE** = *Mas Leipei Enas* (Greek: "we're one short") — the thing everyone says when a
 > pickup game is missing a player. This app fills that gap.
 
-Status: **v1 spec / not yet built.** This document is the source of truth for scope, data
-model, and screens. It will evolve; changes go through commits so the reasoning is tracked.
+Status: **v1 in progress.** Foundation landed: domain models, Firestore repositories, auth
+service, app skeleton with auth gate, sign-in + discover screens, and Firestore security
+rules. Next: create-match screen, match detail + join/leave, and the Cloud Functions. This
+document is the source of truth for scope, data model, and screens; changes go through
+commits so the reasoning is tracked.
 
 ---
 
