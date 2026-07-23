@@ -104,15 +104,22 @@ class Match {
     );
   }
 
-  /// Fields a **client** is allowed to set when creating a match. Deliberately
-  /// omits [playerIds]/[status]/[spotsMissing] — those are initialized and
-  /// maintained by Cloud Functions.
+  /// Payload sent to the `createMatch` Cloud Function. Deliberately omits
+  /// [playerIds]/[status]/[spotsMissing] (server-authoritative) and
+  /// [organizerId] (taken from the authenticated caller server-side).
+  ///
+  /// Uses plain-JSON types — `startAtMs` (epoch millis) and separate
+  /// `lat`/`lng` — so the callable payload doesn't depend on how a Firestore
+  /// Timestamp/GeoPoint serializes over the wire.
   Map<String, dynamic> toCreateMap() {
     return {
       'sport': sport.id,
-      'organizerId': organizerId,
-      'venue': venue.toMap(),
-      'startAt': Timestamp.fromDate(startAt),
+      'venue': {
+        'name': venue.name,
+        'lat': venue.geo.latitude,
+        'lng': venue.geo.longitude,
+      },
+      'startAtMs': startAt.millisecondsSinceEpoch,
       'totalPlayers': totalPlayers,
       'chatLink': chatLink,
     };
