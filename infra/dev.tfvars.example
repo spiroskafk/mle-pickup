@@ -1,0 +1,15 @@
+# Copy to dev.tfvars and fill in. dev.tfvars is git-ignored (may hold billing id).
+project_id          = "mle-pickup-dev"
+project_name        = "MLE (dev)"
+environment         = "dev"
+region              = "europe-west1"
+firestore_location  = "eur3"
+budget_amount_eur   = 5
+budget_alert_emails = ["you@example.com"]
+
+# Required only for `apply` (not for `plan`). Find yours with:
+#   gcloud billing accounts list
+# billing_account = "XXXXXX-XXXXXX-XXXXXX"
+
+# Only if the project lives under a GCP organization:
+# org_id = "123456789012"

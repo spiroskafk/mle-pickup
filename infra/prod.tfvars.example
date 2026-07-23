@@ -1,0 +1,12 @@
+# Copy to prod.tfvars and fill in. prod.tfvars is git-ignored.
+project_id          = "mle-pickup-prod"
+project_name        = "MLE"
+environment         = "prod"
+region              = "europe-west1"
+firestore_location  = "eur3"
+budget_amount_eur   = 20
+budget_alert_emails = ["you@example.com"]
+
+# Required for `apply`:
+# billing_account = "XXXXXX-XXXXXX-XXXXXX"
+# org_id          = "123456789012"

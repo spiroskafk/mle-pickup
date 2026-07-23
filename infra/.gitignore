@@ -1,0 +1,13 @@
+# Terraform state — never commit (holds resource ids and can hold secrets).
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+
+# Real tfvars may hold billing account ids — only .example files are tracked.
+*.tfvars
+!*.tfvars.example
+
+# Crash logs / plan outputs
+crash.log
+*.tfplan
