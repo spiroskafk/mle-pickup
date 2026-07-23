@@ -67,7 +67,14 @@ class AuthService {
   }
 
   Future<void> signOut() async {
-    await _googleSignIn.signOut();
+    // Google sign-out is best-effort: it can throw when there's no Google
+    // session (e.g. the user signed in with email, or on web/emulator).
+    // It must never block the Firebase sign-out, which is the one that matters.
+    try {
+      await _googleSignIn.signOut();
+    } catch (_) {
+      // ignore — no active Google session to clear
+    }
     await _auth.signOut();
   }
 
