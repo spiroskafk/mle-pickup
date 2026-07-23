@@ -170,6 +170,9 @@ chosen over Realtime DB specifically for geo/sport queries.
 - **v1.1** — rating / no-show tracking (prerequisite for opening to strangers).
 - **v2** — recurring matches, teams, in-app chat, stats.
 
+The full backlog — app features, infrastructure/observability, DevOps, and
+ideas — lives in [ROADMAP.md](./ROADMAP.md).
+
 ## 13. Open questions
 
 - Proximity query approach: Firestore geohashing (`geoflutterfire`) vs. simple city/area tag

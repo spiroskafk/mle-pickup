@@ -30,11 +30,13 @@ tech stack.
 
 ## Roadmap
 
-- **v1** — the core loop above, for a closed circle of friends.
+- **v1** — the core loop above, for a closed circle of friends. **Built and
+  verified end-to-end against the Firebase emulators.**
 - **v1.1** — player ratings & no-show tracking (before opening to strangers).
 - **v2** — recurring matches, teams, in-app chat, stats.
 
-See [SPEC.md](./SPEC.md) for details.
+See [SPEC.md](./SPEC.md) for the v1 spec and [ROADMAP.md](./ROADMAP.md) for the
+full backlog (app features, infrastructure/observability, and ideas).
 
 ## License
 
