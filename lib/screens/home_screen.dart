@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import '../models/match.dart';
 import '../repositories/match_repository.dart';
 import '../services/auth_service.dart';
+import 'create_match_screen.dart';
+import 'match_detail_screen.dart';
 
 /// Discover screen: a live list of open matches. Map view and the sport filter
 /// are follow-ups (SPEC §10); this establishes the read path and the join flow.
@@ -48,9 +50,8 @@ class HomeScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          // Create-match screen is the next task.
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Create match — coming next')),
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (_) => const CreateMatchScreen()),
           );
         },
         icon: const Icon(Icons.add),
@@ -77,7 +78,11 @@ class _MatchTile extends StatelessWidget {
           ? Chip(label: Text('$missing missing'))
           : const Chip(label: Text('Full')),
       onTap: () {
-        // Match detail screen is a follow-up.
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (_) => MatchDetailScreen(matchId: match.id),
+          ),
+        );
       },
     );
   }
