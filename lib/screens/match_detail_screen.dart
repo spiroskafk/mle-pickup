@@ -174,7 +174,7 @@ class _StatusChip extends StatelessWidget {
     };
     return Chip(
       label: Text(label),
-      backgroundColor: color.withOpacity(0.15),
+      backgroundColor: color.withValues(alpha: 0.15),
     );
   }
 }
