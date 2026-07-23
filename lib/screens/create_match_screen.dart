@@ -37,7 +37,8 @@ class _CreateMatchScreenState extends State<CreateMatchScreen> {
   }
 
   Future<void> _pickVenue() async {
-    final result = await Navigator.of(context).push<({String name, GeoPoint geo})>(
+    final result =
+        await Navigator.of(context).push<({String name, GeoPoint geo})>(
       MaterialPageRoute(builder: (_) => const VenuePickerScreen()),
     );
     if (result != null) setState(() => _venue = result);
@@ -58,8 +59,8 @@ class _CreateMatchScreenState extends State<CreateMatchScreen> {
     );
     if (time == null) return;
     setState(() {
-      _startAt = DateTime(
-          date.year, date.month, date.day, time.hour, time.minute);
+      _startAt =
+          DateTime(date.year, date.month, date.day, time.hour, time.minute);
     });
   }
 
@@ -148,7 +149,9 @@ class _CreateMatchScreenState extends State<CreateMatchScreen> {
             _PickerTile(
               icon: Icons.schedule,
               label: 'When',
-              value: _startAt == null ? 'Pick date & time' : _formatDate(_startAt!),
+              value: _startAt == null
+                  ? 'Pick date & time'
+                  : _formatDate(_startAt!),
               onTap: _pickDateTime,
             ),
             const SizedBox(height: 16),
