@@ -47,3 +47,10 @@ DerivedData/
 # === JVM crash dumps ===
 hs_err_pid*.log
 replay_pid*.log
+
+# Firebase emulator debug logs
+firebase-debug.log
+firestore-debug.log
+*-debug.log
+firebase-export-*/
+.firebase/
