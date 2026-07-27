@@ -57,6 +57,15 @@ class MatchRepository {
         .map((snap) => snap.docs.map(Match.fromDoc).toList());
   }
 
+  /// Matches the given user organizes.
+  Stream<List<Match>> watchOrganizedBy(String uid) {
+    return _col
+        .where('organizerId', isEqualTo: uid)
+        .orderBy('startAt')
+        .snapshots()
+        .map((snap) => snap.docs.map(Match.fromDoc).toList());
+  }
+
   /// Creates a new match. The client only writes the fields in [toCreateMap];
   /// a Cloud Function initializes the organizer as the first participant and
   /// sets the server-authoritative fields (playerIds/status/timestamps).

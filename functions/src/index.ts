@@ -68,7 +68,10 @@ export const createMatch = onCall(async (req) => {
   const lng = Number(d.venue?.lng ?? NaN);
   const startAtMs = Number(d.startAtMs ?? NaN);
 
-  if (!sport) throw new HttpsError("invalid-argument", "Sport is required.");
+  const validSports = ["football", "basketball", "tennis", "volleyball", "padel"];
+  if (!sport || !validSports.includes(sport)) {
+    throw new HttpsError("invalid-argument", `Invalid sport. Must be one of: ${validSports.join(", ")}`);
+  }
   if (!Number.isFinite(totalPlayers) || totalPlayers < 2) {
     throw new HttpsError("invalid-argument", "totalPlayers must be >= 2.");
   }
@@ -84,29 +87,31 @@ export const createMatch = onCall(async (req) => {
   const startAt = Timestamp.fromMillis(startAtMs);
   const geo = new GeoPoint(lat, lng);
 
-  const ref = db.collection("matches").doc();
+  const matchRef = db.collection("matches").doc();
+  const participantRef = matchRef.collection("participants").doc(uid);
   const now = FieldValue.serverTimestamp();
 
-  await ref.set({
+  const batch = db.batch();
+  batch.set(matchRef, {
     sport,
     organizerId: uid,
     venue: {name: venueName, geo},
     startAt,
     totalPlayers,
     status: totalPlayers <= 1 ? "full" : "open",
-    playerIds: [uid], // organizer occupies the first spot
+    playerIds: [uid],
     chatLink: d.chatLink ? String(d.chatLink) : null,
     createdAt: now,
     updatedAt: now,
   });
-
-  await ref.collection("participants").doc(uid).set({
+  batch.set(participantRef, {
     uid,
     role: "organizer",
     joinedAt: now,
   });
+  await batch.commit();
 
-  return {matchId: ref.id};
+  return {matchId: matchRef.id};
 });
 
 /**
@@ -197,28 +202,35 @@ export const leaveMatch = onCall(async (req) => {
   return {ok: true};
 });
 
-/** cancelMatch — organizer-only. */
-export const cancelMatch = onCall(async (req) => {
-  const uid = requireUid(req);
-  const matchId = String(req.data?.matchId ?? "");
-  if (!matchId) {
-    throw new HttpsError("invalid-argument", "matchId is required.");
-  }
+export const cancelMatch = onCall(async (request) => {
+  const uid = request.auth?.uid;
+  if (!uid) throw new HttpsError("unauthenticated", "Must be signed in.");
+
+  const { matchId } = request.data;
+  if (!matchId) throw new HttpsError("invalid-argument", "matchId required.");
 
   const ref = db.collection("matches").doc(matchId);
-  const snap = await ref.get();
-  if (!snap.exists) {
-    throw new HttpsError("not-found", "Match not found.");
-  }
-  if ((snap.data() as MatchDoc).organizerId !== uid) {
-    throw new HttpsError("permission-denied", "Only the organizer can cancel.");
-  }
 
-  await ref.update({
-    status: "cancelled",
-    updatedAt: FieldValue.serverTimestamp(),
+  await db.runTransaction(async (tx) => {
+    const snap = await tx.get(ref);
+    if (!snap.exists) throw new HttpsError("not-found", "Match not found.");
+
+    const data = snap.data()!;
+    if (data.organizerId !== uid) {
+      throw new HttpsError("permission-denied", "Only the organizer can cancel.");
+    }
+    if (data.status === "cancelled") return;
+
+    tx.update(ref, {
+      status: "cancelled",
+      updatedAt: FieldValue.serverTimestamp(),
+    });
+
+    const parts = await ref.collection("participants").listDocuments();
+    for (const doc of parts) {
+      tx.delete(doc);
+    }
   });
-  return {ok: true};
 });
 
 /**

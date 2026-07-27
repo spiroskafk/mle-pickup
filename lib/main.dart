@@ -9,6 +9,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
 
 import 'services/auth_service.dart';
+import 'services/messaging_service.dart';
 import 'theme/app_theme.dart';
 import 'screens/sign_in_screen.dart';
 import 'screens/shell_screen.dart';
@@ -48,6 +49,11 @@ Future<void> main() async {
     await FirebaseAuth.instance.useAuthEmulator(host, 9099);
     FirebaseFirestore.instance.useFirestoreEmulator(host, 8080);
     FirebaseFunctions.instance.useFunctionsEmulator(host, 5001);
+  } else {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      MessagingService().init(user.uid);
+    }
   }
 
   FlutterNativeSplash.remove();
