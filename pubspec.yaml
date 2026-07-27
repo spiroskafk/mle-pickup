@@ -28,6 +28,9 @@ dependencies:
   # State management (lightweight, good enough for v1)
   provider: ^6.1.2
 
+  # Splash screen
+  flutter_native_splash: ^2.4.8
+
   # Utilities
   intl: ^0.19.0
 
@@ -38,3 +41,15 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/splash.png
+
+flutter_native_splash:
+  color: "#00A86B"
+  image: assets/splash.png
+  fullscreen: true
+
+  android_12:
+    color: "#00A86B"
+    image: assets/splash.png
+    icon_background_color: "#00A86B"
