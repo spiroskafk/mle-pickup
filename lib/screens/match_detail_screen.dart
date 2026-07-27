@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import '../models/match.dart';
 import '../repositories/match_repository.dart';
 import '../services/auth_service.dart';
+import '../theme/app_colors.dart';
 
-/// Match detail with join / leave / cancel. All mutations go through the
-/// repository (Cloud Functions); this screen only reflects state and surfaces
-/// errors returned by the server.
 class MatchDetailScreen extends StatefulWidget {
   const MatchDetailScreen({super.key, required this.matchId});
 
@@ -25,6 +24,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
     setState(() => _busy = true);
     try {
       await fn();
+      HapticFeedback.lightImpact();
     } catch (_) {
       if (mounted) {
         ScaffoldMessenger.of(context)
@@ -60,7 +60,11 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
             children: [
               Row(
                 children: [
-                  Text(match.sport.emoji, style: const TextStyle(fontSize: 40)),
+                  Hero(
+                    tag: 'match-${match.id}',
+                    child: Text(match.sport.emoji,
+                        style: const TextStyle(fontSize: 40)),
+                  ),
                   const SizedBox(width: 12),
                   Expanded(
                     child: Column(
@@ -76,19 +80,30 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
                 ],
               ),
               const SizedBox(height: 24),
-              _InfoRow(
+              _InfoCard(
                 icon: Icons.schedule,
                 text: _formatDate(match.startAt),
               ),
-              _InfoRow(
+              const SizedBox(height: 8),
+              _InfoCard(
                 icon: Icons.groups,
                 text: '${match.playerIds.length} / ${match.totalPlayers} in'
                     '${match.spotsMissing > 0 ? ' · ${match.spotsMissing} missing' : ''}',
               ),
-              if (match.chatLink != null)
-                _InfoRow(icon: Icons.chat, text: match.chatLink!),
-              const SizedBox(height: 32),
-              _actionButton(match, isOrganizer, isIn),
+              if (match.chatLink != null) ...[
+                const SizedBox(height: 8),
+                _InfoCard(icon: Icons.chat, text: match.chatLink!),
+              ],
+              const SizedBox(height: 24),
+              _ParticipantsSection(
+                playerCount: match.playerIds.length,
+                totalPlayers: match.totalPlayers,
+              ),
+              const SizedBox(height: 24),
+              SizedBox(
+                width: double.infinity,
+                child: _actionButton(match, isOrganizer, isIn),
+              ),
             ],
           );
         },
@@ -136,22 +151,96 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
   }
 }
 
-class _InfoRow extends StatelessWidget {
-  const _InfoRow({required this.icon, required this.text});
+class _InfoCard extends StatelessWidget {
+  const _InfoCard({required this.icon, required this.text});
   final IconData icon;
   final String text;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6),
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.surfaceContainerHighest,
+        borderRadius: BorderRadius.circular(12),
+      ),
       child: Row(
         children: [
-          Icon(icon, size: 20),
+          Icon(icon, size: 20, color: Theme.of(context).colorScheme.primary),
           const SizedBox(width: 12),
           Expanded(child: Text(text)),
         ],
       ),
+    );
+  }
+}
+
+class _ParticipantsSection extends StatelessWidget {
+  const _ParticipantsSection({
+    required this.playerCount,
+    required this.totalPlayers,
+  });
+
+  final int playerCount;
+  final int totalPlayers;
+
+  @override
+  Widget build(BuildContext context) {
+    final displayCount = playerCount.clamp(0, 5);
+    final extra = playerCount - 5;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Participants',
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+        ),
+        const SizedBox(height: 12),
+        Row(
+          children: [
+            for (int i = 0; i < displayCount; i++)
+              Padding(
+                padding: const EdgeInsets.only(right: 8),
+                child: CircleAvatar(
+                  radius: 16,
+                  backgroundColor: AppColors.pitchGreen.withValues(alpha: 0.15),
+                  child: Text(
+                    'P${i + 1}',
+                    style: const TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ),
+            if (extra > 0)
+              Padding(
+                padding: const EdgeInsets.only(right: 8),
+                child: CircleAvatar(
+                  radius: 16,
+                  backgroundColor: Colors.grey.shade300,
+                  child: Text(
+                    '+$extra',
+                    style: const TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ),
+            if (playerCount == 0)
+              Text(
+                'No participants yet',
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: Theme.of(context).colorScheme.onSurfaceVariant,
+                    ),
+              ),
+          ],
+        ),
+      ],
     );
   }
 }
@@ -185,7 +274,7 @@ class _DisabledNote extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surfaceContainerHighest,
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(12),
       ),
       child: Text(text, textAlign: TextAlign.center),
     );

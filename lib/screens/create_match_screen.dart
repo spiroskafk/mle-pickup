@@ -1,16 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import '../models/match.dart';
 import '../models/sport.dart';
 import '../repositories/match_repository.dart';
 import '../services/auth_service.dart';
+import '../theme/app_colors.dart';
 import 'venue_picker_screen.dart';
 
-/// Form to create a new match. The organizer is taken from the authenticated
-/// caller server-side, so this screen only collects sport, venue, time,
-/// player count, and an optional chat link.
 class CreateMatchScreen extends StatefulWidget {
   const CreateMatchScreen({super.key});
 
@@ -86,8 +85,6 @@ class _CreateMatchScreenState extends State<CreateMatchScreen> {
       _error = null;
     });
 
-    // organizerId/status/playerIds are set server-side; we pass placeholders
-    // that toCreateMap() doesn't serialize anyway.
     final match = Match(
       id: '',
       sport: _sport,
@@ -104,6 +101,7 @@ class _CreateMatchScreenState extends State<CreateMatchScreen> {
 
     try {
       await _repo.create(match);
+      HapticFeedback.lightImpact();
       if (mounted) Navigator.of(context).pop(true);
     } catch (_) {
       if (mounted) {
@@ -116,6 +114,9 @@ class _CreateMatchScreenState extends State<CreateMatchScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final sportColor = AppColors.sportColor(_sport.id);
+
     return Scaffold(
       appBar: AppBar(title: const Text('New match')),
       body: Form(
@@ -123,20 +124,61 @@ class _CreateMatchScreenState extends State<CreateMatchScreen> {
         child: ListView(
           padding: const EdgeInsets.all(16),
           children: [
-            DropdownButtonFormField<Sport>(
-              initialValue: _sport,
-              decoration: const InputDecoration(
-                labelText: 'Sport',
-                border: OutlineInputBorder(),
+            Text(
+              'Sport',
+              style: theme.textTheme.titleSmall?.copyWith(
+                fontWeight: FontWeight.w600,
               ),
-              items: [
-                for (final s in Sport.values)
-                  DropdownMenuItem(
-                    value: s,
-                    child: Text('${s.emoji}  ${s.label}'),
+            ),
+            const SizedBox(height: 8),
+            GridView.count(
+              crossAxisCount: 2,
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              mainAxisSpacing: 12,
+              crossAxisSpacing: 12,
+              childAspectRatio: 1.4,
+              children: [
+                for (final sport in Sport.values)
+                  GestureDetector(
+                    onTap: () {
+                      HapticFeedback.lightImpact();
+                      setState(() => _sport = sport);
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: _sport == sport
+                            ? AppColors.sportColor(sport.id)
+                                .withValues(alpha: 0.15)
+                            : theme.colorScheme.surfaceContainerHighest
+                                .withValues(alpha: 0.5),
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(
+                          color: _sport == sport
+                              ? AppColors.sportColor(sport.id)
+                              : theme.colorScheme.outlineVariant,
+                          width: _sport == sport ? 2 : 1,
+                        ),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(sport.emoji,
+                              style: const TextStyle(fontSize: 36)),
+                          const SizedBox(height: 8),
+                          Text(
+                            sport.label,
+                            style: theme.textTheme.bodyMedium?.copyWith(
+                              fontWeight: _sport == sport
+                                  ? FontWeight.w600
+                                  : FontWeight.normal,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
               ],
-              onChanged: (v) => setState(() => _sport = v ?? Sport.football),
             ),
             const SizedBox(height: 16),
             _PickerTile(
@@ -159,19 +201,60 @@ class _CreateMatchScreenState extends State<CreateMatchScreen> {
               children: [
                 const Text('Total players'),
                 const Spacer(),
-                IconButton(
-                  icon: const Icon(Icons.remove_circle_outline),
-                  onPressed: _totalPlayers > 2
-                      ? () => setState(() => _totalPlayers--)
+                GestureDetector(
+                  onTap: _totalPlayers > 2
+                      ? () {
+                          HapticFeedback.lightImpact();
+                          setState(() => _totalPlayers--);
+                        }
                       : null,
+                  child: Container(
+                    width: 36,
+                    height: 36,
+                    decoration: BoxDecoration(
+                      color: _totalPlayers > 2
+                          ? sportColor
+                          : theme.colorScheme.surfaceContainerHighest,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(
+                      Icons.remove,
+                      color: _totalPlayers > 2
+                          ? Colors.white
+                          : theme.colorScheme.onSurfaceVariant,
+                      size: 20,
+                    ),
+                  ),
                 ),
-                Text('$_totalPlayers',
-                    style: Theme.of(context).textTheme.titleMedium),
-                IconButton(
-                  icon: const Icon(Icons.add_circle_outline),
-                  onPressed: _totalPlayers < 30
-                      ? () => setState(() => _totalPlayers++)
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Text('$_totalPlayers',
+                      style: theme.textTheme.titleMedium),
+                ),
+                GestureDetector(
+                  onTap: _totalPlayers < 30
+                      ? () {
+                          HapticFeedback.lightImpact();
+                          setState(() => _totalPlayers++);
+                        }
                       : null,
+                  child: Container(
+                    width: 36,
+                    height: 36,
+                    decoration: BoxDecoration(
+                      color: _totalPlayers < 30
+                          ? sportColor
+                          : theme.colorScheme.surfaceContainerHighest,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(
+                      Icons.add,
+                      color: _totalPlayers < 30
+                          ? Colors.white
+                          : theme.colorScheme.onSurfaceVariant,
+                      size: 20,
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -182,13 +265,12 @@ class _CreateMatchScreenState extends State<CreateMatchScreen> {
               decoration: const InputDecoration(
                 labelText: 'Chat link (optional)',
                 hintText: 'WhatsApp/Viber group invite',
-                border: OutlineInputBorder(),
               ),
             ),
             if (_error != null) ...[
               const SizedBox(height: 12),
               Text(_error!,
-                  style: TextStyle(color: Theme.of(context).colorScheme.error)),
+                  style: TextStyle(color: theme.colorScheme.error)),
             ],
             const SizedBox(height: 24),
             FilledButton(

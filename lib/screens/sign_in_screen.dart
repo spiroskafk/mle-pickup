@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../services/auth_service.dart';
+import '../theme/app_colors.dart';
 import 'register_screen.dart';
 
-/// Email + Google sign-in. Registration is a v1 follow-up screen; for now this
-/// handles the sign-in path and Google.
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
 
@@ -61,89 +60,128 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(24),
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 400),
-              child: Form(
-                key: _formKey,
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [AppColors.pitchGreen, AppColors.darkGreen],
+          ),
+        ),
+        child: SafeArea(
+          child: Center(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(24),
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 400),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Text(
+                    const Text(
                       'MLE',
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.displaySmall,
+                      style: TextStyle(
+                        fontSize: 48,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
                     ),
                     const SizedBox(height: 4),
-                    Text(
-                      "Mas Leipei Enas — we're one short",
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.bodyMedium,
+                    const Text(
+                      "Mas Leipei Enas",
+                      style: TextStyle(fontSize: 16, color: Colors.white70),
                     ),
                     const SizedBox(height: 32),
-                    TextFormField(
-                      controller: _emailController,
-                      keyboardType: TextInputType.emailAddress,
-                      autofillHints: const [AutofillHints.email],
-                      decoration: const InputDecoration(
-                        labelText: 'Email',
-                        border: OutlineInputBorder(),
+                    Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(24),
                       ),
-                      validator: (v) => (v == null || !v.contains('@'))
-                          ? 'Enter a valid email'
-                          : null,
-                    ),
-                    const SizedBox(height: 12),
-                    TextFormField(
-                      controller: _passwordController,
-                      obscureText: true,
-                      autofillHints: const [AutofillHints.password],
-                      decoration: const InputDecoration(
-                        labelText: 'Password',
-                        border: OutlineInputBorder(),
-                      ),
-                      validator: (v) => (v == null || v.isEmpty)
-                          ? 'Enter your password'
-                          : null,
-                    ),
-                    if (_error != null) ...[
-                      const SizedBox(height: 12),
-                      Text(
-                        _error!,
-                        style: TextStyle(
-                            color: Theme.of(context).colorScheme.error),
-                      ),
-                    ],
-                    const SizedBox(height: 20),
-                    FilledButton(
-                      onPressed: _busy ? null : _signInWithEmail,
-                      child: _busy
-                          ? const SizedBox(
-                              height: 20,
-                              width: 20,
-                              child: CircularProgressIndicator(strokeWidth: 2),
-                            )
-                          : const Text('Sign in'),
-                    ),
-                    const SizedBox(height: 12),
-                    OutlinedButton.icon(
-                      onPressed: _busy ? null : _signInWithGoogle,
-                      icon: const Icon(Icons.account_circle_outlined),
-                      label: const Text('Continue with Google'),
-                    ),
-                    const SizedBox(height: 8),
-                    TextButton(
-                      onPressed: _busy
-                          ? null
-                          : () => Navigator.of(context).push(
-                                MaterialPageRoute(
-                                    builder: (_) => const RegisterScreen()),
+                      child: Padding(
+                        padding: const EdgeInsets.all(24),
+                        child: Form(
+                          key: _formKey,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              TextFormField(
+                                controller: _emailController,
+                                keyboardType: TextInputType.emailAddress,
+                                autofillHints: const [AutofillHints.email],
+                                decoration: const InputDecoration(
+                                  labelText: 'Email',
+                                ),
+                                validator: (v) => (v == null || !v.contains('@'))
+                                    ? 'Enter a valid email'
+                                    : null,
                               ),
-                      child: const Text("New here? Create an account"),
+                              const SizedBox(height: 12),
+                              TextFormField(
+                                controller: _passwordController,
+                                obscureText: true,
+                                autofillHints: const [AutofillHints.password],
+                                decoration: const InputDecoration(
+                                  labelText: 'Password',
+                                ),
+                                validator: (v) => (v == null || v.isEmpty)
+                                    ? 'Enter your password'
+                                    : null,
+                              ),
+                              if (_error != null) ...[
+                                const SizedBox(height: 12),
+                                Text(
+                                  _error!,
+                                  style: TextStyle(
+                                    color: Theme.of(context).colorScheme.error,
+                                  ),
+                                ),
+                              ],
+                              const SizedBox(height: 20),
+                              FilledButton(
+                                onPressed: _busy ? null : _signInWithEmail,
+                                child: _busy
+                                    ? const SizedBox(
+                                        height: 20,
+                                        width: 20,
+                                        child: CircularProgressIndicator(
+                                          strokeWidth: 2,
+                                        ),
+                                      )
+                                    : const Text('Sign in'),
+                              ),
+                              const SizedBox(height: 12),
+                              OutlinedButton.icon(
+                                onPressed: _busy ? null : _signInWithGoogle,
+                                icon: const Icon(Icons.g_mobiledata, size: 24),
+                                label: const Text('Continue with Google'),
+                                style: OutlinedButton.styleFrom(
+                                  foregroundColor:
+                                      Theme.of(context).colorScheme.onSurface,
+                                  side: BorderSide(
+                                    color: Colors.grey.shade400,
+                                  ),
+                                  minimumSize: const Size.fromHeight(52),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 8),
+                              TextButton(
+                                onPressed: _busy
+                                    ? null
+                                    : () => Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (_) =>
+                                                const RegisterScreen(),
+                                          ),
+                                        ),
+                                child: const Text("New here? Create an account"),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 ),
