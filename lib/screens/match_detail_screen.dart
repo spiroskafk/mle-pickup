@@ -35,6 +35,27 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
     }
   }
 
+  Future<bool> _confirm(String title, String message) async {
+    final result = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: Text(title),
+        content: Text(message),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, false),
+            child: const Text('No'),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(ctx, true),
+            child: const Text('Yes'),
+          ),
+        ],
+      ),
+    );
+    return result ?? false;
+  }
+
   @override
   Widget build(BuildContext context) {
     final uid = context.read<AuthService>().currentUser?.uid;
@@ -119,7 +140,13 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
       return OutlinedButton.icon(
         onPressed: _busy
             ? null
-            : () => _action(() => _repo.cancel(match.id), 'Could not cancel.'),
+            : () async {
+                if (await _confirm('Cancel match?',
+                    'This will cancel the match for all players.')) {
+                  _action(
+                      () => _repo.cancel(match.id), 'Could not cancel.');
+                }
+              },
         icon: const Icon(Icons.close),
         label: const Text('Cancel match'),
       );
@@ -128,7 +155,13 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
       return OutlinedButton.icon(
         onPressed: _busy
             ? null
-            : () => _action(() => _repo.leave(match.id), 'Could not leave.'),
+            : () async {
+                if (await _confirm('Leave match?',
+                    'Are you sure you want to leave this match?')) {
+                  _action(
+                      () => _repo.leave(match.id), 'Could not leave.');
+                }
+              },
         icon: const Icon(Icons.exit_to_app),
         label: const Text('Leave match'),
       );

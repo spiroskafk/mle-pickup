@@ -40,7 +40,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             _passwordController.text,
             _nameController.text.trim(),
           );
-      if (mounted) Navigator.of(context).pop();
+      if (mounted) Navigator.of(context).popUntil((route) => route.isFirst);
     } on FirebaseAuthException catch (e) {
       setState(() => _error = e.message ?? 'Registration failed.');
     } catch (_) {

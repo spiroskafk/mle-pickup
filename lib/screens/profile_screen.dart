@@ -1,11 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../models/match.dart';
+import '../repositories/match_repository.dart';
 import '../services/auth_service.dart';
 import '../theme/app_colors.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  bool _busy = false;
+
+  Future<void> _signOut() async {
+    setState(() => _busy = true);
+    try {
+      await context.read<AuthService>().signOut();
+    } catch (_) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Could not sign out. Try again.')),
+        );
+      }
+    } finally {
+      if (mounted) setState(() => _busy = false);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +39,7 @@ class ProfileScreen extends StatelessWidget {
     final displayName = user?.displayName ?? 'Player';
     final email = user?.email ?? '';
     final photoUrl = user?.photoURL;
+    final uid = user?.uid ?? '';
 
     final initials = displayName
         .split(' ')
@@ -91,11 +116,17 @@ class ProfileScreen extends StatelessWidget {
                         padding: const EdgeInsets.all(20),
                         child: Column(
                           children: [
-                            Text(
-                              '0',
-                              style: theme.textTheme.headlineMedium?.copyWith(
-                                fontWeight: FontWeight.bold,
-                              ),
+                            StreamBuilder<List<Match>>(
+                              stream: MatchRepository().watchForPlayer(uid),
+                              builder: (context, snap) {
+                                final count = snap.data?.length ?? 0;
+                                return Text(
+                                  '$count',
+                                  style: theme.textTheme.headlineMedium?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                );
+                              },
                             ),
                             const SizedBox(height: 4),
                             Text(
@@ -116,11 +147,17 @@ class ProfileScreen extends StatelessWidget {
                         padding: const EdgeInsets.all(20),
                         child: Column(
                           children: [
-                            Text(
-                              '0',
-                              style: theme.textTheme.headlineMedium?.copyWith(
-                                fontWeight: FontWeight.bold,
-                              ),
+                            StreamBuilder<List<Match>>(
+                              stream: MatchRepository().watchOrganizedBy(uid),
+                              builder: (context, snap) {
+                                final count = snap.data?.length ?? 0;
+                                return Text(
+                                  '$count',
+                                  style: theme.textTheme.headlineMedium?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                );
+                              },
                             ),
                             const SizedBox(height: 4),
                             Text(
@@ -143,8 +180,14 @@ class ProfileScreen extends StatelessWidget {
               child: SizedBox(
                 width: double.infinity,
                 child: OutlinedButton.icon(
-                  onPressed: auth.signOut,
-                  icon: const Icon(Icons.logout),
+                  onPressed: _busy ? null : _signOut,
+                  icon: _busy
+                      ? const SizedBox(
+                          height: 20,
+                          width: 20,
+                          child: CircularProgressIndicator(strokeWidth: 2),
+                        )
+                      : const Icon(Icons.logout),
                   label: const Text('Sign out'),
                   style: OutlinedButton.styleFrom(
                     foregroundColor: theme.colorScheme.error,
