@@ -1,111 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../models/match.dart';
-import '../models/sport.dart';
 import '../repositories/match_repository.dart';
-import 'create_match_screen.dart';
+import '../services/auth_service.dart';
 import 'match_detail_screen.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  Sport? _selectedSport;
+class MyMatchesScreen extends StatelessWidget {
+  const MyMatchesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final uid = context.read<AuthService>().currentUser!.uid;
     final repo = MatchRepository();
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Open matches'),
-      ),
-      body: Column(
-        children: [
-          _SportFilterBar(
-            selected: _selectedSport,
-            onSelected: (sport) => setState(() => _selectedSport = sport),
-          ),
-          Expanded(
-            child: StreamBuilder<List<Match>>(
-              stream: repo.watchOpen(sport: _selectedSport),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator());
-                }
-                if (snapshot.hasError) {
-                  return const Center(child: Text('Could not load matches.'));
-                }
-                final matches = snapshot.data ?? const [];
-                if (matches.isEmpty) {
-                  return const _EmptyState();
-                }
-                return RefreshIndicator(
-                  onRefresh: () async {},
-                  child: ListView.builder(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 8,
-                    ),
-                    itemCount: matches.length,
-                    itemBuilder: (context, i) =>
-                        _MatchCard(match: matches[i]),
-                  ),
-                );
-              },
+      appBar: AppBar(title: const Text('My Matches')),
+      body: StreamBuilder<List<Match>>(
+        stream: repo.watchForPlayer(uid),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          if (snapshot.hasError) {
+            return const Center(child: Text('Could not load matches.'));
+          }
+          final matches = snapshot.data ?? const [];
+          if (matches.isEmpty) {
+            return const _EmptyState();
+          }
+          return RefreshIndicator(
+            onRefresh: () async {},
+            child: ListView.builder(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              itemCount: matches.length,
+              itemBuilder: (context, i) => _MatchCard(match: matches[i]),
             ),
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(builder: (_) => const CreateMatchScreen()),
           );
         },
-        icon: const Icon(Icons.add),
-        label: const Text('New match'),
-      ),
-    );
-  }
-}
-
-class _SportFilterBar extends StatelessWidget {
-  const _SportFilterBar({required this.selected, required this.onSelected});
-
-  final Sport? selected;
-  final ValueChanged<Sport?> onSelected;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 56,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(right: 8),
-            child: ChoiceChip(
-              label: const Text('All'),
-              selected: selected == null,
-              onSelected: (_) => onSelected(null),
-            ),
-          ),
-          for (final sport in Sport.values)
-            Padding(
-              padding: const EdgeInsets.only(right: 8),
-              child: ChoiceChip(
-                label: Text('${sport.emoji} ${sport.label}'),
-                selected: selected == sport,
-                onSelected: (_) => onSelected(sport),
-              ),
-            ),
-        ],
       ),
     );
   }
@@ -209,31 +141,19 @@ class _EmptyState extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Text('⚽', style: TextStyle(fontSize: 64)),
+            const Text('🏟️', style: TextStyle(fontSize: 64)),
             const SizedBox(height: 16),
             Text(
-              'No open matches nearby',
+              'No matches yet',
               style: theme.textTheme.headlineSmall,
             ),
             const SizedBox(height: 8),
             Text(
-              'Be the first — create a match and fill your spots.',
+              'Join or create a match to get started.',
               textAlign: TextAlign.center,
               style: theme.textTheme.bodyMedium?.copyWith(
                 color: theme.colorScheme.onSurfaceVariant,
               ),
-            ),
-            const SizedBox(height: 24),
-            FilledButton.icon(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (_) => const CreateMatchScreen(),
-                  ),
-                );
-              },
-              icon: const Icon(Icons.add),
-              label: const Text('Create a match'),
             ),
           ],
         ),
