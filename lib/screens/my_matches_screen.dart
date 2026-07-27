@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../models/match.dart';
 import '../repositories/match_repository.dart';
 import '../services/auth_service.dart';
+import '../theme/app_colors.dart';
 import 'match_detail_screen.dart';
 
 class MyMatchesScreen extends StatelessWidget {
@@ -51,17 +52,21 @@ class _MatchCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final sportColor = AppColors.sportColor(match.sport.id);
     final d = match.startAt;
     String two(int n) => n.toString().padLeft(2, '0');
     final dateTime =
         '${two(d.day)}/${two(d.month)} ${two(d.hour)}:${two(d.minute)}';
     final playerCount = '${match.playerIds.length}/${match.totalPlayers}';
     final missing = match.spotsMissing;
+    final fillRatio = match.totalPlayers > 0
+        ? match.playerIds.length / match.totalPlayers
+        : 0.0;
 
     return Card(
       margin: const EdgeInsets.only(bottom: 12),
       child: InkWell(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(16),
         onTap: () {
           Navigator.of(context).push(
             MaterialPageRoute(
@@ -69,60 +74,95 @@ class _MatchCard extends StatelessWidget {
             ),
           );
         },
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Row(
-            children: [
-              Container(
-                width: 56,
-                height: 56,
-                decoration: BoxDecoration(
-                  color: theme.colorScheme.primaryContainer,
-                  shape: BoxShape.circle,
-                ),
-                alignment: Alignment.center,
-                child: Text(
-                  match.sport.emoji,
-                  style: const TextStyle(fontSize: 28),
+        child: Row(
+          children: [
+            Container(
+              width: 4,
+              height: 72,
+              decoration: BoxDecoration(
+                color: sportColor,
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(16),
+                  bottomLeft: Radius.circular(16),
                 ),
               ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Row(
                   children: [
-                    Text(
-                      match.venue.name,
-                      style: theme.textTheme.titleMedium,
+                    Container(
+                      width: 56,
+                      height: 56,
+                      decoration: BoxDecoration(
+                        color: sportColor.withValues(alpha: 0.15),
+                        shape: BoxShape.circle,
+                      ),
+                      alignment: Alignment.center,
+                      child: Text(
+                        match.sport.emoji,
+                        style: const TextStyle(fontSize: 28),
+                      ),
                     ),
-                    const SizedBox(height: 4),
-                    Text(
-                      '$dateTime  ·  $playerCount in',
-                      style: theme.textTheme.bodyMedium?.copyWith(
-                        color: theme.colorScheme.onSurfaceVariant,
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            match.venue.name,
+                            style: theme.textTheme.titleMedium,
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            '$dateTime  ·  $playerCount in',
+                            style: theme.textTheme.bodyMedium?.copyWith(
+                              color: theme.colorScheme.onSurfaceVariant,
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(4),
+                            child: LinearProgressIndicator(
+                              value: fillRatio,
+                              minHeight: 4,
+                              backgroundColor:
+                                  theme.colorScheme.surfaceContainerHighest,
+                              color: sportColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 6,
+                      ),
+                      decoration: BoxDecoration(
+                        color: missing > 0
+                            ? sportColor.withValues(alpha: 0.12)
+                            : theme.colorScheme.errorContainer,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Text(
+                        missing > 0 ? '$missing open' : 'Full',
+                        style: TextStyle(
+                          color: missing > 0
+                              ? sportColor
+                              : theme.colorScheme.error,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 13,
+                        ),
                       ),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(width: 12),
-              Chip(
-                label: Text(
-                  missing > 0 ? '$missing open' : 'Full',
-                  style: TextStyle(
-                    color: missing > 0
-                        ? theme.colorScheme.primary
-                        : theme.colorScheme.error,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                backgroundColor: missing > 0
-                    ? theme.colorScheme.primaryContainer
-                    : theme.colorScheme.errorContainer,
-                side: BorderSide.none,
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

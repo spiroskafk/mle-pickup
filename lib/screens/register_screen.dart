@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../services/auth_service.dart';
+import '../theme/app_colors.dart';
 
-/// Email/password registration. On success the AuthGate reacts to the auth
-/// state change and routes to Home.
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
 
@@ -41,7 +40,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             _passwordController.text,
             _nameController.text.trim(),
           );
-      if (mounted) Navigator.of(context).pop(); // AuthGate takes over
+      if (mounted) Navigator.of(context).pop();
     } on FirebaseAuthException catch (e) {
       setState(() => _error = e.message ?? 'Registration failed.');
     } catch (_) {
@@ -54,69 +53,115 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Create account')),
-      body: SafeArea(
-        child: Center(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(24),
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 400),
-              child: Form(
-                key: _formKey,
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [AppColors.pitchGreen, AppColors.darkGreen],
+          ),
+        ),
+        child: SafeArea(
+          child: Center(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(24),
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 400),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    TextFormField(
-                      controller: _nameController,
-                      textCapitalization: TextCapitalization.words,
-                      decoration: const InputDecoration(
-                        labelText: 'Name',
-                        border: OutlineInputBorder(),
+                    const Text(
+                      'MLE',
+                      style: TextStyle(
+                        fontSize: 48,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
                       ),
-                      validator: (v) => (v == null || v.trim().isEmpty)
-                          ? 'Enter your name'
-                          : null,
                     ),
-                    const SizedBox(height: 12),
-                    TextFormField(
-                      controller: _emailController,
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: const InputDecoration(
-                        labelText: 'Email',
-                        border: OutlineInputBorder(),
+                    const SizedBox(height: 4),
+                    const Text(
+                      "Create your account",
+                      style: TextStyle(fontSize: 16, color: Colors.white70),
+                    ),
+                    const SizedBox(height: 32),
+                    Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(24),
                       ),
-                      validator: (v) => (v == null || !v.contains('@'))
-                          ? 'Enter a valid email'
-                          : null,
-                    ),
-                    const SizedBox(height: 12),
-                    TextFormField(
-                      controller: _passwordController,
-                      obscureText: true,
-                      decoration: const InputDecoration(
-                        labelText: 'Password (min 6 chars)',
-                        border: OutlineInputBorder(),
+                      child: Padding(
+                        padding: const EdgeInsets.all(24),
+                        child: Form(
+                          key: _formKey,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              TextFormField(
+                                controller: _nameController,
+                                textCapitalization: TextCapitalization.words,
+                                decoration: const InputDecoration(
+                                  labelText: 'Name',
+                                ),
+                                validator: (v) => (v == null || v.trim().isEmpty)
+                                    ? 'Enter your name'
+                                    : null,
+                              ),
+                              const SizedBox(height: 12),
+                              TextFormField(
+                                controller: _emailController,
+                                keyboardType: TextInputType.emailAddress,
+                                decoration: const InputDecoration(
+                                  labelText: 'Email',
+                                ),
+                                validator: (v) => (v == null || !v.contains('@'))
+                                    ? 'Enter a valid email'
+                                    : null,
+                              ),
+                              const SizedBox(height: 12),
+                              TextFormField(
+                                controller: _passwordController,
+                                obscureText: true,
+                                decoration: const InputDecoration(
+                                  labelText: 'Password (min 6 chars)',
+                                ),
+                                validator: (v) => (v == null || v.length < 6)
+                                    ? 'At least 6 characters'
+                                    : null,
+                              ),
+                              if (_error != null) ...[
+                                const SizedBox(height: 12),
+                                Text(
+                                  _error!,
+                                  style: TextStyle(
+                                    color: Theme.of(context).colorScheme.error,
+                                  ),
+                                ),
+                              ],
+                              const SizedBox(height: 20),
+                              FilledButton(
+                                onPressed: _busy ? null : _register,
+                                child: _busy
+                                    ? const SizedBox(
+                                        height: 20,
+                                        width: 20,
+                                        child: CircularProgressIndicator(
+                                          strokeWidth: 2,
+                                        ),
+                                      )
+                                    : const Text('Create account'),
+                              ),
+                              const SizedBox(height: 8),
+                              TextButton(
+                                onPressed: _busy
+                                    ? null
+                                    : () => Navigator.of(context).pop(),
+                                child: const Text("Back to sign in"),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
-                      validator: (v) => (v == null || v.length < 6)
-                          ? 'At least 6 characters'
-                          : null,
-                    ),
-                    if (_error != null) ...[
-                      const SizedBox(height: 12),
-                      Text(_error!,
-                          style: TextStyle(
-                              color: Theme.of(context).colorScheme.error)),
-                    ],
-                    const SizedBox(height: 20),
-                    FilledButton(
-                      onPressed: _busy ? null : _register,
-                      child: _busy
-                          ? const SizedBox(
-                              height: 20,
-                              width: 20,
-                              child: CircularProgressIndicator(strokeWidth: 2))
-                          : const Text('Create account'),
                     ),
                   ],
                 ),
