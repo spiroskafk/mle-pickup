@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 
 import 'services/auth_service.dart';
 import 'screens/sign_in_screen.dart';
-import 'screens/home_screen.dart';
+import 'screens/shell_screen.dart';
 
 /// When true, the app talks to the local Firebase Emulator Suite instead of a
 /// real project. Enable at run time with:
@@ -90,7 +90,7 @@ class AuthGate extends StatelessWidget {
             body: Center(child: CircularProgressIndicator()),
           );
         }
-        return snapshot.hasData ? const HomeScreen() : const SignInScreen();
+        return snapshot.hasData ? const ShellScreen() : const SignInScreen();
       },
     );
   }
