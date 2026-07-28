@@ -24,6 +24,14 @@
         {"fieldPath": "playerIds", "arrayConfig": "CONTAINS"},
         {"fieldPath": "startAt", "order": "ASCENDING"}
       ]
+    },
+    {
+      "collectionGroup": "matches",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {"fieldPath": "organizerId", "order": "ASCENDING"},
+        {"fieldPath": "startAt", "order": "ASCENDING"}
+      ]
     }
   ],
   "fieldOverrides": []

@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "demo-mle"
+    "default": "demo-mle",
+    "dev": "mle-pickup-dev-23738"
   }
 }

@@ -16,7 +16,8 @@ class VenuePickerScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // The web build has no Maps key wired up in index.html yet, so use the
     // manual fallback there. Native builds use the map.
-    return kIsWeb ? const _ManualVenueForm() : const _MapVenuePicker();
+    // TODO: restore map picker once a Google Maps API key is configured
+    return const _ManualVenueForm();
   }
 }
 

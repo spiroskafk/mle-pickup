@@ -1,3 +1,13 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.3.20")
+    }
+}
+
 allprojects {
     repositories {
         google()
@@ -17,6 +27,7 @@ subprojects {
 }
 subprojects {
     project.evaluationDependsOn(":app")
+    apply(plugin = "org.jetbrains.kotlin.android")
 }
 
 tasks.register<Delete>("clean") {

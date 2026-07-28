@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
 
+import 'firebase_options.dart';
 import 'services/auth_service.dart';
 import 'services/messaging_service.dart';
 import 'theme/app_theme.dart';
@@ -41,7 +42,7 @@ Future<void> main() async {
             messagingSenderId: '0',
             projectId: 'demo-mle',
           )
-        : null,
+        : DefaultFirebaseOptions.currentPlatform,
   );
 
   if (_useEmulator) {

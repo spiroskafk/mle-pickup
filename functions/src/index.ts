@@ -53,7 +53,7 @@ function requireUid(req: CallableRequest): string {
  * organizer as the first participant. The client cannot preset playerIds or
  * status; we own those.
  */
-export const createMatch = onCall(async (req) => {
+export const createMatch = onCall({region: "europe-west1"}, async (req) => {
   const uid = requireUid(req);
   const d = req.data ?? {};
 
@@ -119,7 +119,7 @@ export const createMatch = onCall(async (req) => {
  * is full, or the caller already joined. The transaction guarantees two users
  * racing for the last spot can't both succeed.
  */
-export const joinMatch = onCall(async (req) => {
+export const joinMatch = onCall({region: "europe-west1"}, async (req) => {
   const uid = requireUid(req);
   const matchId = String(req.data?.matchId ?? "");
   if (!matchId) {
@@ -165,7 +165,7 @@ export const joinMatch = onCall(async (req) => {
  * leaveMatch — transactionally releases the caller's spot, reopening the match.
  * The organizer cannot leave (they cancel instead).
  */
-export const leaveMatch = onCall(async (req) => {
+export const leaveMatch = onCall({region: "europe-west1"}, async (req) => {
   const uid = requireUid(req);
   const matchId = String(req.data?.matchId ?? "");
   if (!matchId) {
@@ -202,7 +202,7 @@ export const leaveMatch = onCall(async (req) => {
   return {ok: true};
 });
 
-export const cancelMatch = onCall(async (request) => {
+export const cancelMatch = onCall({region: "europe-west1"}, async (request) => {
   const uid = request.auth?.uid;
   if (!uid) throw new HttpsError("unauthenticated", "Must be signed in.");
 
@@ -238,7 +238,7 @@ export const cancelMatch = onCall(async (request) => {
  * reopens. Fires on any match update and diffs the status.
  */
 export const onMatchStatusChange = onDocumentUpdated(
-  "matches/{matchId}",
+  {region: "europe-west1", document: "matches/{matchId}"},
   async (event) => {
     const before = event.data?.before.data() as MatchDoc | undefined;
     const after = event.data?.after.data() as MatchDoc | undefined;

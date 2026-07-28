@@ -10,8 +10,8 @@ Legend: ✅ done · 🔜 next up · 💤 later · 💭 idea
 
 ## Where we are today
 
-The v1 core loop is **built and verified end-to-end against the Firebase
-Emulator Suite**:
+The v1 core loop is **built and deployed to a real Firebase project**
+(`mle-pickup-dev-23738`, Blaze plan, europe-west1):
 
 - ✅ Auth (email/password), register + sign-in
 - ✅ Create match (sport, venue, time, player count, chat link)
@@ -19,11 +19,14 @@ Emulator Suite**:
 - ✅ Join / leave / cancel — server-authoritative via Cloud Functions
 - ✅ Notification trigger on match full / spot reopened (FCM)
 - ✅ Firestore security rules (clients can't write shared state)
+- ✅ Firestore composite indexes (including `organizerId + startAt`)
+- ✅ Cloud Functions deployed to `europe-west1` (all 5 functions)
 - ✅ CI (GitHub Actions: analyze, test, format, functions build)
 - ✅ IaC (Terraform: GCP project, APIs, Firestore, budget alert)
+- ✅ Android emulator verified end-to-end
 
-Not yet run on a real Firebase project (needs a billing account) or on physical
-devices with a Google Maps key.
+Not yet run on physical devices or with a Google Maps API key (venue picker
+falls back to manual form).
 
 ---
 
@@ -35,6 +38,8 @@ devices with a Google Maps key.
 - **Profile** screen — display name, avatar, preferred sports (edit path).
 - **Sport filter** on the discover screen (repository already supports it).
 - **Register/sign-in polish** — password reset, better validation messages.
+- **Google Maps API key** — restore the map-based venue picker (currently
+  falls back to manual name + coordinates form).
 
 ### 💤 Later
 - **Map view of matches** on discover (pins by location). Needs a maps
@@ -65,8 +70,8 @@ devices with a Google Maps key.
   - Firebase **Crashlytics** + **Performance Monitoring** (near plug-and-play).
   - Cloud Functions logs → **Cloud Logging** → export to **Grafana**
     (log-based metrics, error-rate alerts on the callables).
-- **Terraform `apply`** to a real `dev` project once a billing account is
-  attached (config is written and `validate`s today; only `apply` is deferred).
+- **Terraform `apply`** to a real `dev` project — ✅ done for `mle-pickup-dev-23738`.
+  Next: `prod` project + remote state in GCS.
 
 ### 💤 Later
 - **Maps provider decision** — Google Maps SDK (free on mobile, needs a billing
@@ -95,14 +100,16 @@ devices with a Google Maps key.
 
 ## Known limitations to revisit
 
-- **Google sign-in doesn't work on the Auth emulator** — real OAuth flow needs a
-  real project. Email/password works everywhere.
-- **No Maps on web** — falls back to manual venue entry until a maps provider is
-  wired up.
+- **Google sign-in works on the real project** but not on the Auth emulator.
+  Email/password works everywhere.
+- **No Maps on web or Android** — venue picker falls back to manual form until a
+  Google Maps API key is wired up. On Android, `jni:1.0.1` requires the Kotlin
+  plugin on the buildscript classpath (workaround in `android/build.gradle.kts`).
 - **Firestore proximity queries** — v1 has no geo-radius query; discover shows
   all open matches. Options: Firestore geohashing (`geoflutterfire`) or a simple
   area/city tag. See SPEC §13.
 - **Single region** — Firestore location is fixed at creation; chosen `eur3`.
+  Cloud Functions all pinned to `europe-west1`.
 
 ---
 
